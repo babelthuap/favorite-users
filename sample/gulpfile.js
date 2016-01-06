@@ -146,15 +146,15 @@ gulp.task('uglify:app', function() {
 
 // Starts a test server, which you can view at http://localhost:8079
 gulp.task('server', ['build'], function() {
-  gulp.src('./build')
-    .pipe($.webserver({
-      port: 8079,
-      host: 'localhost',
-      fallback: 'index.html',
-      livereload: true,
-      open: true
-    }))
-  ;
+  // gulp.src('./build')
+  //   .pipe($.webserver({
+  //     port: 8079,
+  //     host: 'localhost',
+  //     fallback: 'index.html',
+  //     livereload: true,
+  //     open: true
+  //   }))
+  // ;
 });
 
 // Builds your entire app once, without starting a server
