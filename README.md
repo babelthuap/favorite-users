@@ -21,3 +21,16 @@ _by Asami, Mike, Nicholas, Patrick_
 - Responsive design
 
 - Protected routes: only admins can delete users or edit another user
+
+## Development setup
+
+Clone this repo then run
+
+  $ npm setup
+  $ npm start
+
+In a separate terminal window, run the following commands from the main project folder
+
+  $ cd public
+  $ npm setup
+  $ npm start
