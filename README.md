@@ -1,6 +1,6 @@
 # Favorite Users
 
-_by Asami, Mike, Nicholas, Patrick_
+_by Asami, Nicholas, Patrick_
 
 ## Specification from AJ
 
