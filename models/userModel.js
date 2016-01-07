@@ -31,9 +31,9 @@ userSchema.statics.login = function(userInfo, cb) {
   User.findOne({email: userInfo.email}, (err, foundUser) => {
     if (err) return cb('server error');
     if (!foundUser) return cb('incorrect email or password');
-    bcrypt.compare(userInfo.password, foundUser.password, (err, isGood) => {
+    bcrypt.compare(userInfo.password, foundUser.password, (err, passwordMatches) => {
       if (err) return cb('server err');
-      if (isGood) {
+      if (passwordMatches) {
         foundUser.password = null;
         return cb(null, foundUser.token());
       } else {
