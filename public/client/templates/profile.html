@@ -21,36 +21,27 @@ controller: ProfileCtrl
           </div>
         </div>
         <div class="grid-block vertical">
-
-          <div class="grid-content">
-            <h3>Info:</h3>
-          </div>
-
-          <div class="grid-block">
+          <div class="grid-container">
+            
             <div class="grid-content">
-              <table role="grid">
-                <tbody>
-                  <tr>
-                    <td><strong>NAME</strong></td>
-                    <td>{{user.name}}</td>
-                  </tr>
-                  <tr>
-                    <td><strong>EMAIL</strong></td>
-                    <td>{{user.email}}</td>
-                  </tr>
-                  <tr>
-                    <td><strong>PHONE</strong></td>
-                    <td>{{user.phone}}</td>
-                  </tr>
-                  <tr>
-                    <td><strong>ADDRESS</strong></td>
-                    <td>{{user.address}}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <h3>Your Info:</h3>
             </div>
-          </div>
+            
+            <div class="grid-block">
+              <div class="grid-content">
+                <table role="grid">
+                  <tbody>
+                    <tr ng-repeat="field in ['name', 'email', 'phone', 'address']">
+                      <td><strong>{{field.toUpperCase()}}</strong></td>
+                      <td>{{user[field]}}</td>
+                      <td><a href="">Edit</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
 
+          </div>
         </div>
       </div>
     </div>
@@ -64,11 +55,13 @@ controller: ProfileCtrl
         <a href="#" class="button radius"><strong>Find New Friends</strong></a>
       </div>
     </div>
+
   
     <div class="grid-block">
       <friend-card ng-repeat="friend in filterFriends(query)" user={{friend}}>
       </friend-card>
     </div>
+
 
   </div>
 </div>
