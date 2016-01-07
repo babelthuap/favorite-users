@@ -19,10 +19,10 @@ function ProfileCtrl($scope, $stateParams, $state, $controller) {
     address: "123 Drury Ln Somewhere, CA"
   };
   $scope.friends = [
-    {name: "Nicholas", email: "n@yahoo.com", phone: "111-111-1111"},
-    {name: "Asami", email: "a@gmail.com", phone: "222-222-2222"},
-    {name: "Zarathustra", email: "z@spake.co", phone: "333-333-3333"},
-    {name: "Patrick", email: "p@gmail.com", phone: "444-444-4444"}
+    {name: "Nicholas", email: "n@yahoo.com", phone: "111-111-1111", address: "123 Minnesota"},
+    {name: "Asami", email: "a@gmail.com", phone: "222-222-2222", address: "345 Tokyo"},
+    {name: "Zarathustra", email: "z@spake.co", phone: "333-333-3333", address: "000 Persia"},
+    {name: "Patrick", email: "p@gmail.com", phone: "444-444-4444", address: "789 California"}
   ];
 
   $scope.friends.sort(function(a, b) {

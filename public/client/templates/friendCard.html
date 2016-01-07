@@ -1,4 +1,17 @@
-<div class="medium-4 grid-content" style="border: 1px solid black;">
-  <img src="http://placehold.it/250x200">
-  <h3>{{data.name}}</h3>
+<div class="grid-container vertical">
+  <div class="grid-block">
+    <div class="grid-content">
+      <img src="http://placehold.it/250x200">
+    </div>
+  </div>
+  <div class="grid-block">
+    <div class="grid-container">
+      <div class="grid-content">
+        <h3>{{data.name}}</h3>
+        <p>{{data.email}}<br />
+        {{data.phone}}<br />
+        {{data.address}}</p>
+      </div>
+    </div>
+  </div>
 </div>

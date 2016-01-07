@@ -7,8 +7,7 @@ controller: ProfileCtrl
 <div class="grid-container">
   <div class="grid-block vertical">
   
-    
-  
+
     <div class="grid-block">
       <div class="grid-block">
         <div class="grid-content">
@@ -29,12 +28,23 @@ controller: ProfileCtrl
 
           <div class="grid-block">
             <div class="grid-content">
-              <table role="grid" class="text-left">
+              <table role="grid">
                 <tbody>
-                  <tr ng-repeat="(field, datum) in user">
-                    <td><strong>{{field.toUpperCase()}}</strong></td>
-                    <td>{{datum}}</td>
-                    <td><a href="">Edit</a></td>
+                  <tr>
+                    <td><strong>NAME</strong></td>
+                    <td>{{user.name}}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>EMAIL</strong></td>
+                    <td>{{user.email}}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>PHONE</strong></td>
+                    <td>{{user.phone}}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>ADDRESS</strong></td>
+                    <td>{{user.address}}</td>
                   </tr>
                 </tbody>
               </table>
@@ -48,62 +58,17 @@ controller: ProfileCtrl
 
     <div class="grid-block">
       <div class="grid-content">
-        <input type="text" placeholder="Search my friends" ng-model="query">
+        <input type="text" placeholder="Search friends by name or address" ng-model="query">
       </div>
       <div class="grid-content text-right">
-        <a href="#" class="button radius">Find New Friends</a>
+        <a href="#" class="button radius"><strong>Find New Friends</strong></a>
       </div>
     </div>
-
-<!--     
-      <p>{{filterFriends(query)}}</p>
-      <ul>
-      <li ng-repeat="friend in filterFriends(query) track by $index">
-        {{friend.name}}, {{friend.email}}, {{friend.phone}}
-      </li>
-    </ul>
- -->  
   
     <div class="grid-block">
-      <friend-card ng-repeat="friend in filterFriends(query)" 
-                   user={{friend}}>
+      <friend-card ng-repeat="friend in filterFriends(query)" user={{friend}}>
       </friend-card>
     </div>
 
   </div>
 </div>
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
