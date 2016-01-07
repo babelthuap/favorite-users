@@ -12,7 +12,7 @@
       $state: $state
     }));
 
-    $scope.something = 'something cool';
+    $scope.welcome = 'Welcome To Friend Finder!';
 
 
   }

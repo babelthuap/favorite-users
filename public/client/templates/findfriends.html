@@ -1,0 +1,59 @@
+---
+name: findfriends
+url: /findfriends
+animationIn: fadeIn
+animationOut: fadeOut
+controller: FindFriendsCtrl
+---
+
+<div class="grid-block container">
+
+  <div class="grid-block vertical text-center">
+
+    <div class="grid-block">
+      <div class="grid-content">
+        <h1>{{welcome}}</h1>
+      </div>
+    </div>
+
+    <div class="grid-block">
+      <div class="grid-block">
+        <div class="grid-content">
+          <input type="text" placeholder="Name">
+        </div>
+      </div>
+      <div class="grid-block">
+        <div class="grid-content">
+          <input type="text" placeholder="Email">
+        </div>
+      </div>
+      <div class="grid-block">
+        <div class="grid-content">
+          <label for="range">
+            <span class="inline-label">
+              <span class="form-label">Within</span>
+              <select name="range" id="range">
+                <option value="5">5 miles</option>
+                <option value="10">10 miles</option>
+                <option value="15">15 miles</option>
+                <option value="20">20 miles</option>
+                <option value="25">25 miles</option>
+                <option value="50">50 miles</option>
+                <option value="100">100 miles</option>
+              </select>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-block">
+      <div class="grid-block">
+        <div class="grid-content" ng-repeat="friend in friendList track by $index">
+          <friendCard />
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

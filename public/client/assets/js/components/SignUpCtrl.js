@@ -12,7 +12,7 @@
       $state: $state
     }));
 
-    $scope.signup = 'signup';
+    $scope.welcome = 'Tell Us About Yourself!';
 
 
   }
