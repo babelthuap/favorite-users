@@ -5,7 +5,6 @@
     'ui.router',
     'ngAnimate',
 
-    //foundation
     'foundation',
     'foundation.dynamicRouting',
     'foundation.dynamicRouting.animations'
@@ -25,13 +24,9 @@
     });
 
     $locationProvider.hashPrefix('!');
-
   }
 
   function run() {
     FastClick.attach(document.body);
   }
-
-
-
 })();

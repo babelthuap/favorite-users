@@ -10,8 +10,7 @@
     angular.extend(this, $controller('DefaultController', {
       $scope: $scope
     }));
-
-    $scope.username = 'PAN';
+    $scope.username = 'PAMN';
 
     $scope.users =  [
     {
