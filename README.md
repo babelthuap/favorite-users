@@ -26,11 +26,11 @@ _by Asami, Nicholas, Patrick_
 
 Clone this repo then run
 
-    $ npm setup
+    $ npm run setup
     $ npm start
 
 In a separate terminal window, run the following commands from the main project folder
 
     $ cd public
-    $ npm setup
+    $ npm run setup
     $ npm start
