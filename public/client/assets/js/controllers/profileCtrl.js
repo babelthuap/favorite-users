@@ -29,20 +29,14 @@ function ProfileCtrl($scope, $stateParams, $state, $controller) {
     return a.name > b.name;
   });
 
-  function escapeRegExp(string) {
-    return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  }
-
   $scope.filterFriends = function(query) {
     if (!query) {
       return $scope.friends;
     } else {
-      // filter where characters in the query string don’t have to be adjacent in the searched field(s)
-      let reRaw = '.*' + query.split('').map(escapeRegExp).join('.*') + '.*';
-      let re = new RegExp(reRaw, 'i');
+      query = query.toLowerCase();
       return $scope.friends.filter(function(user) {
-        return ['name', 'email', 'phone', 'address'].some(function(field) {
-          return re.test(user[field]);
+        return ['name', 'address'].some(function(field) {
+          return (user[field] || '').toLowerCase().indexOf(query) !== -1;
         });
       });
     }

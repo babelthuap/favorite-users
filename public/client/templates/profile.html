@@ -46,8 +46,6 @@ controller: ProfileCtrl
     </div>
   
 
-    
-  
     <div class="grid-block">
       <div class="grid-content">
         <input type="text" placeholder="Search my friends" ng-model="query">
@@ -57,22 +55,21 @@ controller: ProfileCtrl
       </div>
     </div>
 
-
-  
-  <!--   <p>{{filterFriends(query)}}</p>
-  
-    <ul>
+<!--     
+      <p>{{filterFriends(query)}}</p>
+      <ul>
       <li ng-repeat="friend in filterFriends(query) track by $index">
         {{friend.name}}, {{friend.email}}, {{friend.phone}}
       </li>
     </ul>
-   -->
+ -->  
   
     <div class="grid-block">
-      <friend-card ng-repeat="friend in filterFriends(query) track by $index" 
+      <friend-card ng-repeat="friend in filterFriends(query)" 
                    user={{friend}}>
       </friend-card>
     </div>
+
   </div>
 </div>
   
