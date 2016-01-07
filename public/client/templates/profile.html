@@ -43,9 +43,10 @@ controller: ProfileCtrl
 
   <ul>
     <li ng-repeat="friend in filterFriends(query) track by $index">
-      {{friend.name}}, {{friend.email}}
+      {{friend.name}}, {{friend.email}}, {{friend.phone}}
     </li>
   </ul>
+  
 
 
 </div>
