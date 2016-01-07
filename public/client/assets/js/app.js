@@ -5,13 +5,12 @@
     'ui.router',
     'ngAnimate',
 
-    //foundation
     'foundation',
     'foundation.dynamicRouting',
     'foundation.dynamicRouting.animations'
-  ])
-    .config(config)
-    .run(run)
+    ])
+  .config(config)
+  .run(run)
   ;
 
   config.$inject = ['$urlRouterProvider', '$locationProvider'];
@@ -25,11 +24,9 @@
     });
 
     $locationProvider.hashPrefix('!');
-
   }
 
   function run() {
     FastClick.attach(document.body);
   }
-
 })();

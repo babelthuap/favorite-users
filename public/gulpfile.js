@@ -20,27 +20,27 @@ var isProduction = !!(argv.production);
 
 var paths = {
   assets: [
-    './client/**/*.*',
-    '!./client/templates/**/*.*',
-    '!./client/assets/{scss,js}/**/*.*'
+  './client/**/*.*',
+  '!./client/templates/**/*.*',
+  '!./client/assets/{scss,js}/**/*.*'
   ],
   // Sass will check these folders for files when you use @import.
   sass: [
-    'client/assets/scss',
-    'bower_components/foundation-apps/scss'
+  'client/assets/scss',
+  'bower_components/foundation-apps/scss'
   ],
   // These files include Foundation for Apps and its dependencies
   foundationJS: [
-    'bower_components/fastclick/lib/fastclick.js',
-    'bower_components/viewport-units-buggyfill/viewport-units-buggyfill.js',
-    'bower_components/tether/tether.js',
-    'bower_components/hammerjs/hammer.js',
-    'bower_components/angular/angular.js',
-    'bower_components/angular-animate/angular-animate.js',
-    'bower_components/angular-ui-router/release/angular-ui-router.js',
-    'bower_components/foundation-apps/js/vendor/**/*.js',
-    'bower_components/foundation-apps/js/angular/**/*.js',
-    '!bower_components/foundation-apps/js/angular/app.js'
+  'bower_components/fastclick/lib/fastclick.js',
+  'bower_components/viewport-units-buggyfill/viewport-units-buggyfill.js',
+  'bower_components/tether/tether.js',
+  'bower_components/hammerjs/hammer.js',
+  'bower_components/angular/angular.js',
+  'bower_components/angular-animate/angular-animate.js',
+  'bower_components/angular-ui-router/release/angular-ui-router.js',
+  'bower_components/foundation-apps/js/vendor/**/*.js',
+  'bower_components/foundation-apps/js/angular/**/*.js',
+  '!bower_components/foundation-apps/js/angular/app.js'
   ],
   // These files are for your app's JavaScript
   appJS: [
@@ -61,37 +61,37 @@ gulp.task('copy', function() {
   return gulp.src(paths.assets, {
     base: './client/'
   })
-    .pipe(gulp.dest('./build'))
+  .pipe(gulp.dest('./build'))
   ;
 });
 
 // Copies your app's page templates and generates URLs for them
 gulp.task('copy:templates', function() {
   return gulp.src('./client/templates/**/*.html')
-    .pipe(router({
-      path: 'build/assets/js/routes.js',
-      root: 'client'
-    }))
-    .pipe(gulp.dest('./build/templates'))
+  .pipe(router({
+    path: 'build/assets/js/routes.js',
+    root: 'client'
+  }))
+  .pipe(gulp.dest('./build/templates'))
   ;
 });
 
 // Compiles the Foundation for Apps directive partials into a single JavaScript file
 gulp.task('copy:foundation', function(cb) {
   gulp.src('bower_components/foundation-apps/js/angular/components/**/*.html')
-    .pipe($.ngHtml2js({
-      prefix: 'components/',
-      moduleName: 'foundation',
-      declareModule: false
-    }))
-    .pipe($.uglify())
-    .pipe($.concat('templates.js'))
-    .pipe(gulp.dest('./build/assets/js'))
+  .pipe($.ngHtml2js({
+    prefix: 'components/',
+    moduleName: 'foundation',
+    declareModule: false
+  }))
+  .pipe($.uglify())
+  .pipe($.concat('templates.js'))
+  .pipe(gulp.dest('./build/assets/js'))
   ;
 
   // Iconic SVG icons
   gulp.src('./bower_components/foundation-apps/iconic/**/*')
-    .pipe(gulp.dest('./build/assets/img/iconic/'))
+  .pipe(gulp.dest('./build/assets/img/iconic/'))
   ;
 
   cb();
@@ -102,16 +102,16 @@ gulp.task('sass', function () {
   var minifyCss = $.if(isProduction, $.minifyCss());
 
   return gulp.src('client/assets/scss/app.scss')
-    .pipe($.sass({
-      includePaths: paths.sass,
-      outputStyle: (isProduction ? 'compressed' : 'nested'),
-      errLogToConsole: true
-    }))
-    .pipe($.autoprefixer({
-      browsers: ['last 2 versions', 'ie 10']
-    }))
-    .pipe(minifyCss)
-    .pipe(gulp.dest('./build/assets/css/'))
+  .pipe($.sass({
+    includePaths: paths.sass,
+    outputStyle: (isProduction ? 'compressed' : 'nested'),
+    errLogToConsole: true
+  }))
+  .pipe($.autoprefixer({
+    browsers: ['last 2 versions', 'ie 10']
+  }))
+  .pipe(minifyCss)
+  .pipe(gulp.dest('./build/assets/css/'))
   ;
 });
 
@@ -125,9 +125,9 @@ gulp.task('uglify:foundation', function(cb) {
     }));
 
   return gulp.src(paths.foundationJS)
-    .pipe(uglify)
-    .pipe($.concat('foundation.js'))
-    .pipe(gulp.dest('./build/assets/js/'))
+  .pipe(uglify)
+  .pipe($.concat('foundation.js'))
+  .pipe(gulp.dest('./build/assets/js/'))
   ;
 });
 
@@ -138,9 +138,9 @@ gulp.task('uglify:app', function() {
     }));
 
   return gulp.src(paths.appJS)
-    .pipe(uglify)
-    .pipe($.concat('app.js'))
-    .pipe(gulp.dest('./build/assets/js/'))
+  .pipe(uglify)
+  .pipe($.concat('app.js'))
+  .pipe(gulp.dest('./build/assets/js/'))
   ;
 });
 
