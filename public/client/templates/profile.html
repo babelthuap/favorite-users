@@ -1,0 +1,51 @@
+---
+name: profile
+url: /profile
+controller: ProfileCtrl
+---
+
+<div class="grid-container">
+
+  <hr>
+
+  <div class="grid-block">
+    <div class="medium-5 grid-content">
+      <img src="http://placehold.it/350x300">  
+    </div>
+    <div class="medium-7 grid-content text-center">
+      <h1>Hey there, {{user.name}}</h1>
+      <hr>
+      <h3>Info:</h3>
+      <table role="grid" class="text-left">
+        <tbody>
+          <tr ng-repeat="(field, datum) in user">
+            <td><strong>{{field.toUpperCase()}}</strong></td>
+            <td>{{datum}}</td>
+            <td><a href="">Edit</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="grid-block">
+    <div class="medium-5 grid-content">
+      <input type="text" placeholder="Search my friends" ng-model="query">
+    </div>
+    <div class="medium-7 grid-content text-right">
+      <a href="#" class="button radius">Find New Friends</a>
+    </div>
+  </div>
+
+  <!-- <p>{{filterFriends(query)}}</p> -->
+
+  <ul>
+    <li ng-repeat="friend in filterFriends(query) track by $index">
+      {{friend.name}}, {{friend.email}}
+    </li>
+  </ul>
+
+
+</div>
