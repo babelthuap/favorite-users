@@ -7,15 +7,17 @@ let router = express.Router();
 
 router.post('/register', (req, res) => {
   User.register(req.body, (err, token) => {
-    res.status(err ? 400 : 200)
-    .send(err || token);
+    if (err) return res.status(400).send(err);
+
+    res.cookie('token', token).send();
   });
 });
 
 router.post('/login', (req, res) => {
   User.login(req.body, (err, token) => {
-    res.status(err ? 400 : 200)
-    .send(err || token);
+    if (err) return res.status(400).send(err);
+
+    res.cookie('token', token).send();
   });
 });
 

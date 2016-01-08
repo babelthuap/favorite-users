@@ -11,11 +11,11 @@ let User;
 let userSchema = mongoose.Schema({
   email: {type: String, required: true, unique: true},
   password: {type: String, required: true},
-  name: {type: String, required: true},
+  name: {type: String},
   phone: {type: String},
   address: {type: String},
   profilePic: {type: String},
-  admin: {type: Boolean, required: true, default: false}
+  admin: {type: Boolean, default: false}
 });
 
 userSchema.methods.token = function() {
@@ -29,23 +29,23 @@ userSchema.methods.token = function() {
 
 userSchema.statics.login = function(userInfo, cb) {
   // look for user in database
-  User.findOne({username: userInfo.username}, (err, foundUser) => {
+  User.findOne({email: userInfo.email}, (err, foundUser) => {
     if (err) return cb('server error');
-    if (!foundUser) return cb('incorrect username or password');
+    if (!foundUser) return cb('incorrect email or password');
     bcrypt.compare(userInfo.password, foundUser.password, (err, isGood) => {
       if (err) return cb('server err');
       if (isGood) {
         foundUser.password = null;
         return cb(null, foundUser.token());
       } else {
-        return cb('incorrect username or password');
+        return cb('incorrect email or password');
       }
     });
   });
 }
 
 userSchema.statics.register = function(userInfo, cb) {
-  let username  = userInfo.username
+  let email     = userInfo.email
     , password  = userInfo.password
     , password2 = userInfo.password2;
 
@@ -59,21 +59,15 @@ userSchema.statics.register = function(userInfo, cb) {
     return cb('invalid password');
   }
 
-  // validate username
-  if (!CONFIG.validateUsername(username)) {
-    return cb('invalid username');
-  }
-
   // create user model
-  User.findOne({username: username}, (err, user) => {
-    if (err) return cb('error registering username');
-    if (user) return cb('username taken');
+  User.findOne({email: email}, (err, user) => {
+    if (err || user) return cb('error registering email');
     bcrypt.genSalt(CONFIG.saltRounds, (err, salt) => {
       if (err) return cb(err);
       bcrypt.hash(password, salt, (err, hashedPassword) => {
         if (err) return cb(err);
         let newUser = new User({
-          username: username,
+          email: email,
           password: hashedPassword
         });
         newUser.save((err, savedUser) => {

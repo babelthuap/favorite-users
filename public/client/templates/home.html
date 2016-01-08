@@ -25,10 +25,10 @@ controller: HomeCtrl
     <div class="grid-block">
       <div class="grid-content">
         <h3>Log In</h3>
-        <form>
-          <input type="email" placeholder="email">
-          <input type="password" placeholder="password">
-          <a href="" class="button">Log In!</a>
+        <form ng-submit="loginUser()">
+          <input type="email" ng-model="login.email" placeholder="email" required>
+          <input type="password" ng-model="login.password" placeholder="password" required>
+          <input class="button" type="submit">
         </form>
         <div class="grid-block">
           <div class="grid-content text-right">
