@@ -5,12 +5,11 @@ controller: AdminCtrl
 ---
 
 <div class="grid-container">
-  <h1>Welcome, {{username}}!</h1>  
+  <h1>Welcome, {{user.name}}!</h1>  
   <input type="text" placeholder='Enter keyword'>
   <table class="responsive">
     <thead>
       <tr>
-        <th>ID</th>
         <th>Name</th>
         <th>Email</th>
         <th>Phone</th>
@@ -23,7 +22,6 @@ controller: AdminCtrl
     </thead>
     <tbody>
       <tr ng-repeat="user in users">
-        <td class='id'>{{user._id}}</td>
         <td class='username'>{{user.name}}</td>
         <td class='email'>{{user.email}}</td>
         <td class='phone'>{{user.phone}}</td>
