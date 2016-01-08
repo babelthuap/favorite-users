@@ -35,7 +35,7 @@ router.get('/:id', (req, res) => {
     if (err || !user) return res.status(400).send(err || 'user not found');
     user.password = null;
     res.send(user);
-  });
+  }).populate('friends');
 });
 
 router.delete('/remove/:id', (req, res) => {
