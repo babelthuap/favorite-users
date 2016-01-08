@@ -9,7 +9,7 @@ data = data.map(function(doc){
   var salt = bcrypt.genSaltSync(CONFIG.saltRounds);
   var hash = bcrypt.hashSync(doc.password, salt);
   doc.password = hash;
-  doc.profilePic = "http://placehold.it/350x300";
+  doc.profilePic = "http://lorempixel.com/200/200/animals/";
   return doc;
 });
 

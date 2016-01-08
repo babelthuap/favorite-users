@@ -20,7 +20,7 @@
     }
 
     this.addFriend = function(userId, friendId){
-      $http.post(`/users/addfriend/${userId}/${friendId}`)
+      $http.put(`/users/addfriend/${userId}/${friendId}`)
       .then(function(resp){
         console.log('success', resp);
       })

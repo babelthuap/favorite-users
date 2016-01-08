@@ -44,7 +44,7 @@ router.delete('/remove/:id', (req, res) => {
   })
 });
 
-router.post('/addfriend/:userId/:friendId', (req, res) => {
+router.put('/addfriend/:userId/:friendId', (req, res) => {
   User.findByIdAndUpdate(req.params.userId, { $push: {friends: req.params.friendId} }, function(err, user){
     res.status(err ? 400 : 200).send(err || 'friend added');
   })

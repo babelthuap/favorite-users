@@ -5,7 +5,7 @@
   "scripts": {
     "setup": "npm i",
     "start": "nodemon ./bin/www",
-    "seedDB": "node ./scripts/hashpasswords.js && node ./seedDatabase.js"
+    "seedDB": "node ./scripts/hashpasswords.js && node ./scripts/seedDatabase.js"
   },
   "dependencies": {
     "bcryptjs": "^2.3.0",
