@@ -34,4 +34,10 @@ router.get('/:id', (req, res) => {
   });
 });
 
+router.delete('/remove/:id', (req, res) => {
+  User.findByIdAndRemove(req.params.id, (err, user) => {
+    res.status(err? 400 : 200).send(err ? 'user delete failed': 'user deleted!')
+  })
+})
+
 module.exports = router;

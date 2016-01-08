@@ -10,7 +10,12 @@ controller: AdminCtrl
   <table class="responsive">
     <thead>
       <tr>
-        <th ng-repeat="header in headers">{{header}}</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Profile Image</th>
         <th>Edit</th>
         <th>Make Admin</th>
         <th>Delete</th>
@@ -18,6 +23,7 @@ controller: AdminCtrl
     </thead>
     <tbody>
       <tr ng-repeat="user in users">
+        <td class='id'>{{user._id}}</td>
         <td class='username'>{{user.name}}</td>
         <td class='email'>{{user.email}}</td>
         <td class='phone'>{{user.phone}}</td>
@@ -25,7 +31,7 @@ controller: AdminCtrl
         <td class='avatar'>{{user.avatar}}</td>
         <td class='editbtn'>edit</td>
         <td class='makeadmin'>make admin</td>
-        <td class='deletebtn'>delete</td>
+        <td class='deletebtn' ng-click=deleteUser(user)>delete</td>
       </tr>
     </tbody>
   </table>
