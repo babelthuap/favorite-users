@@ -5,6 +5,7 @@
     'ui.router',
     'ngAnimate',
     'ngCookies',
+    'naif.base64',
 
     'foundation',
     'foundation.dynamicRouting',

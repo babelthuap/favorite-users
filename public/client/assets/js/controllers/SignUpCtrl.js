@@ -15,5 +15,10 @@
     $scope.welcome = 'Tell Us About Yourself!';
 
 
+    $scope.userImage = function(){
+      console.log($scope.pic);
+      return $scope.pic ? 'data:image/jpeg;base64,' + $scope.pic.base64 : "http://placehold.it/250x200";
+    }
+
   }
 })();

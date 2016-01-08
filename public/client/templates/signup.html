@@ -17,7 +17,7 @@ controller: SignUpCtrl
     <div class="grid-block">
       <div class="grid-block">
         <div class="grid-content">
-          <img src="http://placehold.it/350x350">
+          <img ng-src="{{userImage()}}">
         </div>
       </div>
       <div class="grid-block">
@@ -33,7 +33,9 @@ controller: SignUpCtrl
     <div class="grid-block">
       <div class="grid-block">
         <div class="grid-content">
-          <button>Upload a cool image</button>
+          <form>
+            <input type="file" ng-model="pic" base-sixty-four-input>
+          </form>
         </div>
       </div>
     </div>
