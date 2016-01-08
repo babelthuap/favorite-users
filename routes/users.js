@@ -5,6 +5,13 @@ const express = require('express')
 
 let router = express.Router();
 
+router.get('/', (req, res) => {
+  User.find({}, (err, users) => {
+    if (err) return res.status(400).send(err);
+    res.send(users);
+  })
+})
+
 router.post('/register', (req, res) => {
   User.register(req.body, (err, token) => {
     if (err) return res.status(400).send(err);

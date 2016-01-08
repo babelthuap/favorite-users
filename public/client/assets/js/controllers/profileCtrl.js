@@ -7,13 +7,13 @@
 
   function ProfileCtrl(UserSvc, $cookies, $scope, $stateParams, $state, $controller) {
     'use strict';
-    
+
     angular.extend(this, $controller('DefaultController', {
       $scope: $scope,
       $stateParams: $stateParams,
       $state: $state
     }));
-    
+
     // fetch user's info
     let token = $cookies.get('token');
     let id = JSON.parse( atob(token.split('.')[1]) ).id;
@@ -46,6 +46,7 @@
         query = query.toLowerCase();
         return $scope.friends.filter(function(user) {
           return ['name', 'address'].some(function(field) {
+            // '' to catch error if field is not defined
             return (user[field] || '').toLowerCase().indexOf(query) !== -1;
           });
         });

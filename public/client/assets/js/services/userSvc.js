@@ -15,6 +15,18 @@
       return $http.get('/users/' + id);
     }
 
+    let allUsers;
+    $http.get('/users')
+    .then(function(resp){
+      allUsers = resp.data;
+    })
+    .catch(function(err){
+      console.log(err);
+    })
+
+    this.getAllUsers = function(){
+      return allUsers;
+    }
+
   }
 })();
-

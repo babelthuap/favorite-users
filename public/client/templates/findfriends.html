@@ -6,9 +6,9 @@ animationOut: fadeOut
 controller: FindFriendsCtrl
 ---
 
-<div class="grid-block container">
+<div class="grid-container">
 
-  <div class="grid-block vertical text-center">
+  <div class="grid-block align-center text-center">
 
     <div class="grid-block">
       <div class="grid-content">
@@ -19,12 +19,12 @@ controller: FindFriendsCtrl
     <div class="grid-block">
       <div class="grid-block">
         <div class="grid-content">
-          <input type="text" placeholder="Name">
+          <input type="text" placeholder="Name" ng-model="query.name">
         </div>
       </div>
       <div class="grid-block">
         <div class="grid-content">
-          <input type="text" placeholder="Email">
+          <input type="text" placeholder="Email" ng-model="query.email">
         </div>
       </div>
       <div class="grid-block">
@@ -32,7 +32,8 @@ controller: FindFriendsCtrl
           <label for="range">
             <span class="inline-label">
               <span class="form-label">Within</span>
-              <select name="range" id="range">
+              <select name="range" id="range" ng-model="query.range">
+                <option value="">Select A Range</option>
                 <option value="5">5 miles</option>
                 <option value="10">10 miles</option>
                 <option value="15">15 miles</option>
@@ -49,9 +50,8 @@ controller: FindFriendsCtrl
 
     <div class="grid-block">
       <div class="grid-block">
-        <div class="grid-content" ng-repeat="friend in friendList track by $index">
-          <friendCard />
-        </div>
+        <friend-card ng-if="allUsers" ng-repeat="friend in filterPeople()" user={{friend}}>
+        </friend-card>
       </div>
     </div>
 
