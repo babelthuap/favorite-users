@@ -34,7 +34,7 @@ controller: ProfileCtrl
                     <tr ng-repeat="field in ['name', 'email', 'phone', 'address'] track by $index">
                       <td><strong>{{field.toUpperCase()}}</strong></td>
                       <td>{{user[field]}}</td>
-                      <td><a href="">Edit</a></td>
+                      <td><i class="fa fa-pencil-square-o"></i></td>
                     </tr>
                   </tbody>
                 </table>

@@ -20,3 +20,4 @@ data = data.map(function(doc){
 console.log('writing to data/usershashed.json');
 
 fs.writeFileSync('./data/usershashed.json', JSON.stringify(data));
+
