@@ -75,7 +75,8 @@ userSchema.statics.register = function(userInfo, cb) {
           password: hashedPassword,
           name: userInfo.name,
           phone: userInfo.phone,
-          address: userInfo.address
+          address: userInfo.address,
+          profilePic: userInfo.profilePic
         });
         newUser.save((err, savedUser) => {
           savedUser.password = null;

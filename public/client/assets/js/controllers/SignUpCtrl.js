@@ -37,7 +37,8 @@
         address: newAddress,
         password: newPassword,
         password2: newConfirmPassword,
-        email: newemail
+        email: newemail,
+        profilePic: 'data:image/jpeg;base64,' + $scope.pic.base64
       }
 
       console.log("user", newUser)
