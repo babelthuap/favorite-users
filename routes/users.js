@@ -5,18 +5,32 @@ const express = require('express')
 
 let router = express.Router();
 
+router.get('/', (req, res) => {
+  User.find({}, (err, users) => {
+    if (err) return res.status(400).send(err);
+    res.send(users);
+  })
+})
+
 router.post('/register', (req, res) => {
-  console.log("req.body:", req.body)
   User.register(req.body, (err, token) => {
-    res.status(err ? 400 : 200)
-    .send(err || token);
+    if (err) return res.status(400).send(err);
+    res.cookie('token', token).send('user created');
   });
 });
 
 router.post('/login', (req, res) => {
   User.login(req.body, (err, token) => {
-    res.status(err ? 400 : 200)
-    .send(err || token);
+    if (err) return res.status(400).send(err);
+    res.cookie('token', token).send();
+  });
+});
+
+router.get('/:id', (req, res) => {
+  User.findById(req.params.id, (err, user) => {
+    if (err || !user) return res.status(400).send(err || 'user not found');
+    user.password = null;
+    res.send(user);
   });
 });
 
