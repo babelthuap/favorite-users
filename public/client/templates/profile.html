@@ -1,0 +1,67 @@
+---
+name: profile
+url: /profile
+controller: ProfileCtrl
+---
+
+<div class="grid-container">
+  <div class="grid-block vertical">
+  
+
+    <div class="grid-block">
+      <div class="grid-block">
+        <div class="grid-content">
+          <img src="http://placehold.it/350x300">
+        </div>
+      </div>
+      <div class="grid-block vertical">
+        <div class="grid-block">
+          <div class="grid-content text-center">
+            <h1>Hey there, {{user.name}}</h1>
+          </div>
+        </div>
+        <div class="grid-block vertical">
+          <div class="grid-container">
+            
+            <div class="grid-content">
+              <h3>Your Info:</h3>
+            </div>
+            
+            <div class="grid-block">
+              <div class="grid-content">
+                <table role="grid">
+                  <tbody>
+                    <tr ng-repeat="field in ['name', 'email', 'phone', 'address']">
+                      <td><strong>{{field.toUpperCase()}}</strong></td>
+                      <td>{{user[field]}}</td>
+                      <td><a href="">Edit</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+    <div class="grid-block">
+      <div class="grid-content">
+        <input type="text" placeholder="Search friends by name or address" ng-model="query">
+      </div>
+      <div class="grid-content text-right">
+        <a href="#" class="button radius"><strong>Find New Friends</strong></a>
+      </div>
+    </div>
+
+  
+    <div class="grid-block">
+      <friend-card ng-repeat="friend in filterFriends(query)" user={{friend}}>
+      </friend-card>
+    </div>
+
+
+  </div>
+</div>

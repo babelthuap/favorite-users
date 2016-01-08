@@ -1,0 +1,36 @@
+---
+name: admin
+url: /admin
+controller: AdminCtrl
+---
+
+<div class="grid-container">
+  <h1>Welcome, {{username}}!</h1>  
+  <input type="text" placeholder='Enter keyword'>
+  <table class="responsive">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Profile Image</th>
+        <th>Edit</th>
+        <th>Make Admin</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="user in users">
+        <td class='username'>{{user.username}}</td>
+        <td class='email'>{{user.email}}</td>
+        <td class='phone'>{{user.phone}}</td>
+        <td class='address'>{{user.address}}</td>
+        <td class='avatar'>{{user.avatar}}</td>
+        <td class='editbtn'>edit</td>
+        <td class='makeadmin'>make admin</td>
+        <td class='deletebtn'>delete</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

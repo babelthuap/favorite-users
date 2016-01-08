@@ -1,9 +1,41 @@
 ---
 name: home
 url: /
+animationIn: fadeIn
+animationOut: fadeOut
+controller: HomeCtrl
 ---
 
 <div class="grid-container">
-  <h1>Welcome to Foundation for Apps!</h1>
-  <p class="lead">This is version <strong>1.2 Eiger</strong>.</p>
+  <div class="grid-content">
+    <h1>{{welcome}}</h1>
+  </div>
+  <div class="grid-block text-center">
+    <div class="grid-block">
+      <div class="grid-content">
+        <h3>Sign Up</h3>
+        <form>
+          <input type="email" placeholder="email">
+          <input type="password" placeholder="password">
+          <input type="password" placeholder="confirm password">
+          <a href="" class="button">Sign Up!</a>
+        </form>
+      </div>
+    </div>
+    <div class="grid-block">
+      <div class="grid-content">
+        <h3>Log In</h3>
+        <form>
+          <input type="email" placeholder="email">
+          <input type="password" placeholder="password">
+          <a href="" class="button">Log In!</a>
+        </form>
+        <div class="grid-block">
+          <div class="grid-content text-right">
+            <a href="">Forgot password?</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

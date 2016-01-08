@@ -9,8 +9,13 @@ const mongoose = require('mongoose')
 let User;
 
 let userSchema = mongoose.Schema({
-  username: {type: String, required: true, unique: true},
-  password: {type: String, required: true}
+  email: {type: String, required: true, unique: true},
+  password: {type: String, required: true},
+  name: {type: String, required: true},
+  phone: {type: String},
+  address: {type: String},
+  profilePic: {type: String},
+  admin: {type: Boolean, required: true, default: false}
 });
 
 userSchema.methods.token = function() {
