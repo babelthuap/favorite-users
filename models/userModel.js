@@ -45,7 +45,7 @@ userSchema.statics.login = function(userInfo, cb) {
 }
 
 userSchema.statics.register = function(userInfo, cb) {
-  let username  = userInfo.username
+  let name  = userInfo.name
     , password  = userInfo.password
     , password2 = userInfo.password2;
 
@@ -59,23 +59,24 @@ userSchema.statics.register = function(userInfo, cb) {
     return cb('invalid password');
   }
 
-  // validate username
-  if (!CONFIG.validateUsername(username)) {
-    return cb('invalid username');
+  // validate name
+  if (!CONFIG.validateUsername(name)) {
+    return cb('invalid name');
   }
 
   // create user model
-  User.findOne({username: username}, (err, user) => {
-    if (err) return cb('error registering username');
-    if (user) return cb('username taken');
+  User.findOne({name: name}, (err, user) => {
+    if (err) return cb('error registering name');
+    if (user) return cb('name taken');
     bcrypt.genSalt(CONFIG.saltRounds, (err, salt) => {
       if (err) return cb(err);
       bcrypt.hash(password, salt, (err, hashedPassword) => {
         if (err) return cb(err);
         let newUser = new User({
-          username: username,
+          name: name,
           password: hashedPassword
         });
+        console.log("newUser:", newUser)
         newUser.save((err, savedUser) => {
           savedUser.password = null;
           return cb(err, savedUser.token());

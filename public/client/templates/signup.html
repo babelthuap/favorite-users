@@ -23,11 +23,11 @@ controller: SignUpCtrl
       <div class="grid-block">
         <div class="grid-content">
           <form>
-            <input type="text" placeholder="Name">
-            <input type="tel" placeholder="Phone Number">
-            <input rows="2" type="text" placeholder="Address">
-            <input type="password" placeholder="password">
-            <input type="password" placeholder="Confirm Password">
+            <input type="text" placeholder="Name" ng-model="user.name">
+            <input type="tel" placeholder="Phone Number" ng-model="user.phone">
+            <input rows="2" type="text" placeholder="Address" ng-model="user.address">
+            <input type="password" placeholder="password" ng-model="user.password">
+            <input type="password" placeholder="Confirm Password" ng-model="user.confirmpassword">
           </form>
         </div>
       </div>
@@ -42,7 +42,7 @@ controller: SignUpCtrl
     <div class="grid-block">
       <div class="grid-block">
         <div class="grid-content">
-          <button>All Done!</button>
+          <button ng-click="allDone(user)">All Done!</button>
         </div>
       </div>
     </div>

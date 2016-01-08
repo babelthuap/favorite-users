@@ -6,6 +6,7 @@ const express = require('express')
 let router = express.Router();
 
 router.post('/register', (req, res) => {
+  console.log("req.body:", req.body)
   User.register(req.body, (err, token) => {
     res.status(err ? 400 : 200)
     .send(err || token);
