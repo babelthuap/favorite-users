@@ -16,11 +16,20 @@
 </head>
 <body>
   <div class="grid-frame vertical">
-    <div class="grid-content shrink" style="padding: 0;">
-      <ul class="primary condense menu-bar">
-        <li><img src="./assets/etc/imageedit_1_9606717757.gif" alt=""></li>
-        <li><a><strong>Friend Finder</strong></a></li>
-      </ul>
+    <div class="grid-content shrink" style="padding: 0;" ng-controller="NavBarCtrl">
+      <div class="menu-group primary">
+        <div class="menu-group-left">
+          <ul class="primary condense menu-bar">
+            <li><img src="./assets/etc/imageedit_1_9606717757.gif" alt=""></li>
+            <li><a><strong>Friend Finder</strong></a></li>
+          </ul>
+        </div>
+        <div class="menu-group-right">
+          <ul class="primary condense menu-bar">
+            <li><a href="#" class="button alert" ng-click="logout()">Log Out</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
     <div ui-view class="grid-content">
     </div>
