@@ -15,10 +15,8 @@ controller: HomeCtrl
       <div class="grid-content">
         <h3>Sign Up</h3>
         <form>
-          <input type="email" placeholder="email">
-          <input type="password" placeholder="password">
-          <input type="password" placeholder="confirm password">
-          <a href="" class="button">Sign Up!</a>
+          <input type="email" placeholder="email" ng-model="email">
+          <a href="" class="button" ng-click="signup()">Sign Up!</a>
         </form>
       </div>
     </div>
