@@ -35,12 +35,18 @@ router.get('/:id', (req, res) => {
     if (err || !user) return res.status(400).send(err || 'user not found');
     user.password = null;
     res.send(user);
-  });
+  }).populate('friends');
 });
 
 router.delete('/remove/:id', (req, res) => {
   User.findByIdAndRemove(req.params.id, (err, user) => {
     res.status(err? 400 : 200).send(err ? 'user delete failed': 'user deleted!')
+  })
+});
+
+router.put('/addfriend/:userId/:friendId', (req, res) => {
+  User.findByIdAndUpdate(req.params.userId, { $push: {friends: req.params.friendId} }, function(err, user){
+    res.status(err ? 400 : 200).send(err || 'friend added');
   })
 })
 

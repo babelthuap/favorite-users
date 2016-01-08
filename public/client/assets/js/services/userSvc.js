@@ -15,18 +15,18 @@
       return $http.get('/users/' + id);
     }
 
-    let allUsers;
-    $http.get('/users')
-    .then(function(resp){
-      allUsers = resp.data;
-    })
-    .catch(function(err){
-      console.log(err);
-    })
-
     this.getAllUsers = function(){
-      return allUsers;
+      return $http.get('/users');
     }
 
+    this.addFriend = function(userId, friendId){
+      $http.put(`/users/addfriend/${userId}/${friendId}`)
+      .then(function(resp){
+        console.log('success', resp);
+      })
+      .catch(function(err){
+        console.error(err);
+      })
+    }
   }
 })();
