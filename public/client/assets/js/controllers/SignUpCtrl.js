@@ -22,22 +22,14 @@
       return $scope.pic ? 'data:image/jpeg;base64,' + $scope.pic.base64 : "http://placehold.it/250x200";
     }
 
-    $scope.allDone = function(user){
-    console.log("working")
-      var newName = user.name
-      var newPhone = user.phone
-      var newAddress = user.address
-      var newPassword = user.password
-      var newConfirmPassword = user.confirmpassword
-      var newemail = $scope.$storage.email
-
+    $scope.allDone = function(user){     
       var newUser = {
-        name: newName,
-        phone: newPhone,
-        address: newAddress,
-        password: newPassword,
-        password2: newConfirmPassword,
-        email: newemail,
+        name: user.name,
+        phone: user.phone,
+        address: user.address,
+        password: user.password,
+        password2: user.confirmpassword,
+        email: $scope.$storage.email,
         profilePic: 'data:image/jpeg;base64,' + $scope.pic.base64
       }
 

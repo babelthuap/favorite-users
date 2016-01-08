@@ -26,7 +26,7 @@ controller: AdminCtrl
         <td class='email'>{{user.email}}</td>
         <td class='phone'>{{user.phone}}</td>
         <td class='address'>{{user.address}}</td>
-        <td class='avatar'>{{user.avatar}}</td>
+        <td class='profilePic'><img src="{{user.profilePic}}"></td>
         <td class='editbtn'>edit</td>
         <td class='makeadmin'>make admin</td>
         <td class='deletebtn' ng-click=deleteUser(user)>delete</td>

@@ -10,8 +10,6 @@ const express = require('express')
 
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/favorite-users');
 
-
-
 var app = express();
 
 // view engine setup
