@@ -1,3 +1,5 @@
+'use strict';
+
 var data = require('../data/users.json');
 var fs = require('fs');
 var bcrypt = require('bcryptjs')
@@ -9,7 +11,9 @@ data = data.map(function(doc){
   var salt = bcrypt.genSaltSync(CONFIG.saltRounds);
   var hash = bcrypt.hashSync(doc.password, salt);
   doc.password = hash;
-  doc.profilePic = "http://lorempixel.com/200/200/animals/";
+  var randomInt = Math.ceil(Math.random() * 10);
+  doc.profilePic = `http://lorempixel.com/200/200/animals/${randomInt}`;
+  console.log(doc);
   return doc;
 });
 
