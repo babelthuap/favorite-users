@@ -49,9 +49,10 @@ controller: FindFriendsCtrl
     </div>
 
     <div class="grid-block">
-      <div class="grid-block">
-        <friend-card ng-if="allUsers" ng-repeat="friend in filterPeople()" user={{friend}}>
+      <div class="grid-content" ng-repeat="friend in filterPeople()">
+        <friend-card ng-if="allUsers.length" user={{friend}}>
         </friend-card>
+        <a class="button" ng-click="addFriend(friend)">Add Friend</a>
       </div>
     </div>
 
