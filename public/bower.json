@@ -24,6 +24,7 @@
   ],
   "dependencies": {
     "foundation-apps": "~1.2.0",
-    "foundation-icon-fonts": "*"
+    "foundation-icon-fonts": "*",
+    "ngstorage": "~0.3.10"
   }
 }

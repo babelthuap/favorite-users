@@ -3,16 +3,19 @@
 
   angular.module('application').controller('SignUpCtrl', SignUpCtrl);
 
-  SignUpCtrl.$inject = ['$scope', '$stateParams', '$state', '$controller', '$http'];
+  SignUpCtrl.$inject = ['$scope', '$stateParams', '$state', '$controller', '$http', '$localStorage'];
 
-  function SignUpCtrl($scope, $stateParams, $state, $controller, $http) {
+  function SignUpCtrl($scope, $stateParams, $state, $controller, $http, $localStorage) {
     angular.extend(this, $controller('DefaultController', {
       $scope: $scope,
       $stateParams: $stateParams,
-      $state: $state
+      $state: $state,
+      $localStorage: $localStorage
     }));
 
     $scope.welcome = 'Tell Us About Yourself!';
+
+    $scope.$storage = $localStorage;
 
     $scope.allDone = function(user){
     console.log("working")
@@ -21,13 +24,15 @@
       var newAddress = user.address
       var newPassword = user.password
       var newConfirmPassword = user.confirmpassword
+      var newemail = $scope.$storage.email
 
       var newUser = {
         name: newName,
         phone: newPhone,
         address: newAddress,
         password: newPassword,
-        password2: newConfirmPassword
+        password2: newConfirmPassword,
+        email: newemail
       }
 
       console.log("user", newUser)
