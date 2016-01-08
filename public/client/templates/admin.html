@@ -10,7 +10,6 @@ controller: AdminCtrl
   <table class="responsive">
     <thead>
       <tr>
-        <th>ID</th>
         <th>Name</th>
         <th>Email</th>
         <th>Phone</th>
@@ -23,7 +22,6 @@ controller: AdminCtrl
     </thead>
     <tbody>
       <tr ng-repeat="user in users">
-        <td class='id'>{{user._id}}</td>
         <td class='username'>{{user.name}}</td>
         <td class='email'>{{user.email}}</td>
         <td class='phone'>{{user.phone}}</td>
