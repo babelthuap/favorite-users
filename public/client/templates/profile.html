@@ -11,7 +11,7 @@ controller: ProfileCtrl
     <div class="grid-block">
       <div class="medium-5 grid-block">
         <div class="grid-content">
-          <img src="http://placehold.it/350x300">
+          <img ng-src={{user.profilePic}}>
         </div>
       </div>
       <div class="medium-7 grid-block vertical">
@@ -31,7 +31,7 @@ controller: ProfileCtrl
               <div class="grid-content">
                 <table role="grid">
                   <tbody>
-                    <tr ng-repeat="field in ['name', 'email', 'phone', 'address']">
+                    <tr ng-repeat="field in ['name', 'email', 'phone', 'address'] track by $index">
                       <td><strong>{{field.toUpperCase()}}</strong></td>
                       <td>{{user[field]}}</td>
                       <td><a href="">Edit</a></td>
@@ -58,8 +58,10 @@ controller: ProfileCtrl
 
 
     <div class="grid-block">
-      <friend-card ng-repeat="friend in filterFriends(query)" user={{friend}}>
+      <friend-card ng-if="friends.length" ng-repeat="friend in filterFriends(query) track by $index" user={{friend}}>
       </friend-card>
+      <h1 ng-if='!filterFriends(query).length && friends.length'>No friends match your search query</h1>
+      <h1 ng-if="!friends.length">You have no friends!</h1>
     </div>
 
 

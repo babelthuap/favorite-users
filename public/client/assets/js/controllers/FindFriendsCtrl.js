@@ -3,9 +3,9 @@
 
   angular.module('application').controller('FindFriendsCtrl', FindFriendsCtrl);
 
-  FindFriendsCtrl.$inject = ['UserSvc', '$scope', '$stateParams', '$state', '$controller'];
+  FindFriendsCtrl.$inject = ['UserSvc', '$cookies', '$scope', '$stateParams', '$state', '$controller'];
 
-  function FindFriendsCtrl(UserSvc, $scope, $stateParams, $state, $controller) {
+  function FindFriendsCtrl(UserSvc, $cookies, $scope, $stateParams, $state, $controller) {
     angular.extend(this, $controller('DefaultController', {
       $scope: $scope,
       $stateParams: $stateParams,
@@ -14,8 +14,10 @@
 
     $scope.welcome = 'Find Some New Friends';
 
-    $scope.allUsers = UserSvc.getAllUsers()
-    console.log($scope.allUsers);
+    $scope.allUsers = [];
+    UserSvc.getAllUsers().then(function(resp){
+      $scope.allUsers = resp.data;
+    })
 
     $scope.query = {};
     $scope.filterPeople = function() {
@@ -38,5 +40,15 @@
       // return array of filtered people
       return filteredPeople;
     }
+
+    $scope.addFriend = function(friend){
+      let friendId = friend._id;
+      let token = $cookies.get('token');
+      let userId = JSON.parse( atob(token.split('.')[1]) ).id;
+
+      UserSvc.addFriend(userId, friendId);
+    }
+
+
   }
 })();
