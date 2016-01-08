@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "setup": "npm i",
-    "start": "node ./bin/www"
+    "start": "node scripts/seedDatabase.js && nodemon ./bin/www"
   },
   "dependencies": {
     "bcryptjs": "^2.3.0",
