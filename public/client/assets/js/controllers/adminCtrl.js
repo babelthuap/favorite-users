@@ -10,23 +10,23 @@
     angular.extend(this, $controller('DefaultController', {
       $scope: $scope
     }));
-    $scope.username = 'PAMN';
 
-    $scope.users =  [
-    {
-      username: 'Kurokirishima',
+    var users = [
+    { name: 'Kurokirishima',
       email: 'kurokiri@gmail.com',
       phone: '02564',
       address: 'in the Cloud Blvd, Bahamas', 
-      avatar: 'this would be a picture'
+      profilePic: 'this would be a picture'
     },
-    {
-      username: 'Satsumabijin',
+    { username: 'Satsumabijin',
       email: 'satsuma@gmail.com',
       phone: '12989',
       address: 'underwater', 
-      avatar: 'this would be a picture, too!'
-    }
-    ]  
+      profilePic: 'this would be a picture, too!'
+    }]  
+
+    $scope.username = 'PAMN';
+    $scope.headers = Object.keys(users[0]);
+    $scope.users = users;
   };
 })();

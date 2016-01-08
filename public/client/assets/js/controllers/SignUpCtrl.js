@@ -37,7 +37,7 @@
 
       console.log("user", newUser)
       $http.post('/users/register', newUser).then(function cb(res){
-        console.log("res:", res)
+        $state.go('profile')
       }).catch(function cb(error){
         console.log("error:", error)
       })

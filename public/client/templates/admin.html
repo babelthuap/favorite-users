@@ -10,11 +10,7 @@ controller: AdminCtrl
   <table class="responsive">
     <thead>
       <tr>
-        <th>Username</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Address</th>
-        <th>Profile Image</th>
+        <th ng-repeat="header in headers">{{header}}</th>
         <th>Edit</th>
         <th>Make Admin</th>
         <th>Delete</th>
@@ -22,7 +18,7 @@ controller: AdminCtrl
     </thead>
     <tbody>
       <tr ng-repeat="user in users">
-        <td class='username'>{{user.username}}</td>
+        <td class='username'>{{user.name}}</td>
         <td class='email'>{{user.email}}</td>
         <td class='phone'>{{user.phone}}</td>
         <td class='address'>{{user.address}}</td>
