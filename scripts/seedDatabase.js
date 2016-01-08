@@ -2,4 +2,4 @@
 
 var exec = require('child_process').execSync;
 
-exec(`mongoimport --db favorite-users --collection users --drop --file ./data/users.json`);
+exec(`mongoimport --db favorite-users --collection users --drop --file ./data/usershashed.json --jsonArray`);

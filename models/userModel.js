@@ -6,6 +6,8 @@ const mongoose = require('mongoose')
     , moment   = require('moment')
     , CONFIG   = require('../util/authConfig');
 
+var Schema = mongoose.Schema;
+
 let User;
 
 let userSchema = mongoose.Schema({
@@ -15,7 +17,8 @@ let userSchema = mongoose.Schema({
   phone: {type: String},
   address: {type: String},
   profilePic: {type: String},
-  admin: {type: Boolean, default: false}
+  admin: {type: Boolean, default: false},
+  friends: [{type: Schema.Types.ObjectId, ref: "User"}]
 });
 
 userSchema.methods.token = function() {
