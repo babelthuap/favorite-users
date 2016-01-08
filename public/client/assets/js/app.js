@@ -16,7 +16,7 @@
   config.$inject = ['$urlRouterProvider', '$locationProvider'];
 
   function config($urlProvider, $locationProvider) {
-    $urlProvider.otherwise('/');
+    $urlProvider.otherwise('/main');
 
     $locationProvider.html5Mode({
       enabled:true,

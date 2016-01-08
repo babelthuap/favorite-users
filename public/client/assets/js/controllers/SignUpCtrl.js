@@ -13,7 +13,7 @@
     }));
 
     $scope.welcome = 'Tell Us About Yourself!';
-
-
+    var email = $scope.email
+    console.log("email", email)
   }
 })();
