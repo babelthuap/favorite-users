@@ -8,6 +8,7 @@ let router = express.Router();
 router.get('/', (req, res) => {
   User.find({}, (err, users) => {
     if (err) return res.status(400).send(err);
+    users.forEach(user => user.password = null);
     res.send(users);
   })
 })
