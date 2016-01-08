@@ -4,29 +4,34 @@
 
   angular.module('application').controller('AdminCtrl', AdminCtrl);
 
-  AdminCtrl.$inject = ['$scope', '$controller']
+  AdminCtrl.$inject = ['$scope', '$controller', '$http', '$stateParams']
 
-  function AdminCtrl($scope, $controller){
+  function AdminCtrl($scope, $controller, $http, $stateParams){
     angular.extend(this, $controller('DefaultController', {
       $scope: $scope
     }));
-    $scope.username = 'PAMN';
 
-    $scope.users =  [
-    {
-      username: 'Kurokirishima',
-      email: 'kurokiri@gmail.com',
-      phone: '02564',
-      address: 'in the Cloud Blvd, Bahamas', 
-      avatar: 'this would be a picture'
-    },
-    {
-      username: 'Satsumabijin',
-      email: 'satsuma@gmail.com',
-      phone: '12989',
-      address: 'underwater', 
-      avatar: 'this would be a picture, too!'
-    }
-    ]  
+  let users = []; 
+
+  const populateUsers = () => {
+    $http.get('/users').then((res) => {
+      console.log('res', res) 
+      $scope.users = res.data;
+    }).catch((err) => {
+      console.log('err', err)
+    })     
+  }
+
+  populateUsers ();  
+  $scope.username = 'PAMN';
+
+  $scope.deleteUser = (user) => {
+    let id = user._id
+    $http.delete(`/users/remove/${id}`).then((res) => {
+      populateUsers();
+    }).catch((err) => {
+      console.log('err', err)
+    })
+  }
   };
 })();

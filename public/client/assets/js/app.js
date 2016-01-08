@@ -6,6 +6,7 @@
     'ngAnimate',
     'ngCookies',
     'naif.base64',
+    'ngStorage',
 
     'foundation',
     'foundation.dynamicRouting',

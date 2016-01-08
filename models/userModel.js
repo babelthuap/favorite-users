@@ -51,6 +51,7 @@ userSchema.statics.register = function(userInfo, cb) {
   let email     = userInfo.email
     , password  = userInfo.password
     , password2 = userInfo.password2;
+    console.log('userInfo', userInfo)
 
   // compare passwords
   if (password !== password2) {
@@ -71,7 +72,10 @@ userSchema.statics.register = function(userInfo, cb) {
         if (err) return cb(err);
         let newUser = new User({
           email: email,
-          password: hashedPassword
+          password: hashedPassword,
+          name: userInfo.name,
+          phone: userInfo.phone,
+          address: userInfo.address
         });
         newUser.save((err, savedUser) => {
           savedUser.password = null;

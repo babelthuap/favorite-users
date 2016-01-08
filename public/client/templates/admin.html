@@ -10,7 +10,8 @@ controller: AdminCtrl
   <table class="responsive">
     <thead>
       <tr>
-        <th>Username</th>
+        <th>ID</th>
+        <th>Name</th>
         <th>Email</th>
         <th>Phone</th>
         <th>Address</th>
@@ -22,14 +23,15 @@ controller: AdminCtrl
     </thead>
     <tbody>
       <tr ng-repeat="user in users">
-        <td class='username'>{{user.username}}</td>
+        <td class='id'>{{user._id}}</td>
+        <td class='username'>{{user.name}}</td>
         <td class='email'>{{user.email}}</td>
         <td class='phone'>{{user.phone}}</td>
         <td class='address'>{{user.address}}</td>
         <td class='avatar'>{{user.avatar}}</td>
         <td class='editbtn'>edit</td>
         <td class='makeadmin'>make admin</td>
-        <td class='deletebtn'>delete</td>
+        <td class='deletebtn' ng-click=deleteUser(user)>delete</td>
       </tr>
     </tbody>
   </table>
