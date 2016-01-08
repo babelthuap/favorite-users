@@ -12,17 +12,20 @@
 
     // dummy data
     $scope.user = {
-      name: "PAMN"
+      name: "PAMNNN"
     };
 
-    // populate users table
-    $http.get('/users')
-      .then(res => {
-        $scope.users = res.data.filter(user => !user.admin);
-        console.log($scope.users);
-      }).catch(err => {
-        console.log('err', err)
-      });
+    function populateUsers() {
+      $http.get('/users')
+        .then(res => {
+          $scope.users = res.data.filter(user => !user.admin);
+          console.log($scope.users);
+        }).catch(err => {
+          console.log('err', err)
+        });
+    }
+
+    populateUsers();
 
     $scope.deleteUser = function(user) {
       let id = user._id;
