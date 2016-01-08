@@ -54,12 +54,12 @@ controller: AdminCtrl
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="user in users">
+        <tr ng-repeat="user in filterPeople()">
           <td class='username'>{{user.name}}</td>
           <td class='email'>{{user.email}}</td>
           <td class='phone'>{{user.phone}}</td>
           <td class='address'>{{user.address}}</td>
-          <td class='avatar'>{{user.avatar}}</td>
+          <td class='avatar'><img src="{{user.profilePic}}" alt="profilepic" width="50px"></td>
           <td class='editbtn'>edit</td>
           <td class='makeadmin'>make admin</td>
           <td class='deletebtn' ng-click=deleteUser(user)>delete</td>
