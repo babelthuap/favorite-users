@@ -7,6 +7,7 @@
     'ngCookies',
     'naif.base64',
     'ngStorage',
+    'angular-jwt',
 
     'foundation',
     'foundation.dynamicRouting',

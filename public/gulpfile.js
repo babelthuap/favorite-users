@@ -37,6 +37,7 @@ var paths = {
   'bower_components/hammerjs/hammer.js',
   'bower_components/angular/angular.js',
   'bower_components/angular-cookies/angular-cookies.js',
+  'bower_components/angular-jwt/dist/angular-jwt.min.js',
   'bower_components/angular-base64-upload/dist/angular-base64-upload.min.js',
   'bower_components/angular-animate/angular-animate.js',
   'bower_components/angular-ui-router/release/angular-ui-router.js',

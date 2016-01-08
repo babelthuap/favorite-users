@@ -3,9 +3,9 @@
 
   angular.module('application').controller('ProfileCtrl', ProfileCtrl);
 
-  ProfileCtrl.$inject = ['UserSvc', '$cookies', '$scope', '$stateParams', '$state', '$controller'];
+  ProfileCtrl.$inject = ['UserSvc', '$cookies', '$scope', '$stateParams', '$state', '$controller', 'jwtHelper'];
 
-  function ProfileCtrl(UserSvc, $cookies, $scope, $stateParams, $state, $controller) {
+  function ProfileCtrl(UserSvc, $cookies, $scope, $stateParams, $state, $controller, jwtHelper) {
     'use strict';
 
     angular.extend(this, $controller('DefaultController', {
@@ -16,7 +16,7 @@
 
     // fetch user's info
     let token = $cookies.get('token');
-    let id = JSON.parse( atob(token.split('.')[1]) ).id;
+    let id = jwtHelper.decodeToken(token).id;
     UserSvc.getUserInfo(id)
     .then(function(res) {
       $scope.user = res.data;

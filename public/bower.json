@@ -27,6 +27,7 @@
     "foundation-icon-fonts": "*",
     "angular-cookies": "~1.4.8",
     "angular-base64-upload": "~0.1.13",
-    "ngstorage": "~0.3.10"
+    "ngstorage": "~0.3.10",
+    "angular-jwt": "~0.0.9"
   }
 }
