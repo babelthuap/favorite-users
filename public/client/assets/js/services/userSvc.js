@@ -8,9 +8,11 @@
   function UserSvc($http) {
 
     this.login = function(info) {
-      console.log('info:', info);
-
       return $http.post('/users/login', info);
+    }
+
+    this.getUserInfo = function(id) {
+      return $http.get('/users/' + id);
     }
 
   }

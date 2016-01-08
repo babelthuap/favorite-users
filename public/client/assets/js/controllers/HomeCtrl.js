@@ -3,9 +3,9 @@
 
   angular.module('application').controller('HomeCtrl', HomeCtrl);
 
-  HomeCtrl.$inject = ['UserSvc', '$scope', '$stateParams', '$state', '$controller'];
+  HomeCtrl.$inject = ['UserSvc', '$cookies', '$scope', '$stateParams', '$state', '$controller'];
 
-  function HomeCtrl(UserSvc, $scope, $stateParams, $state, $controller) {
+  function HomeCtrl(UserSvc, $cookies, $scope, $stateParams, $state, $controller) {
     angular.extend(this, $controller('DefaultController', {
       $scope: $scope,
       $stateParams: $stateParams,
@@ -16,8 +16,7 @@
 
     $scope.loginUser = function() {
       UserSvc.login($scope.login)
-      .then(function(token) {
-        console.log('token:', token);
+      .then(function() {
         $state.go('profile');
       })
       .catch(function(err) {

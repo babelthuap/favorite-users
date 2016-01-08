@@ -4,6 +4,7 @@
   angular.module('application', [
     'ui.router',
     'ngAnimate',
+    'ngCookies',
 
     'foundation',
     'foundation.dynamicRouting',
@@ -19,7 +20,7 @@
     $urlProvider.otherwise('/');
 
     $locationProvider.html5Mode({
-      enabled:true,
+      enabled: true,
       requireBase: false
     });
 
