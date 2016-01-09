@@ -3,9 +3,13 @@
 
   angular.module('application').controller('FindFriendsCtrl', FindFriendsCtrl);
 
-  FindFriendsCtrl.$inject = ['UserSvc', '$cookies', '$scope', '$stateParams', '$state', '$controller'];
+  FindFriendsCtrl.$inject = ['UserSvc', '$cookies', '$scope', '$rootScope', '$stateParams', '$state', '$controller'];
 
-  function FindFriendsCtrl(UserSvc, $cookies, $scope, $stateParams, $state, $controller) {
+  function FindFriendsCtrl(UserSvc, $cookies, $scope, $rootScope, $stateParams, $state, $controller) {
+    if (!$rootScope.amILoggedIn()) {
+      return $state.go('home');
+    }
+
     angular.extend(this, $controller('DefaultController', {
       $scope: $scope,
       $stateParams: $stateParams,

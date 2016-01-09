@@ -3,10 +3,14 @@
 
   angular.module('application').controller('ProfileCtrl', ProfileCtrl);
 
-  ProfileCtrl.$inject = ['UserSvc', '$cookies', '$scope', '$stateParams', '$state', '$controller'];
+  ProfileCtrl.$inject = ['UserSvc', '$cookies', '$scope', '$rootScope', '$stateParams', '$state', '$controller'];
 
-  function ProfileCtrl(UserSvc, $cookies, $scope, $stateParams, $state, $controller) {
+  function ProfileCtrl(UserSvc, $cookies, $scope, $rootScope, $stateParams, $state, $controller) {
     'use strict';
+
+    if (!$rootScope.amILoggedIn()) {
+      return $state.go('home');
+    }
 
     angular.extend(this, $controller('DefaultController', {
       $scope: $scope,
