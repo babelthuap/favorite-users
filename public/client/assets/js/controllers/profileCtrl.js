@@ -8,25 +8,27 @@
   function ProfileCtrl(UserSvc, $cookies, $scope, $stateParams, $state, $controller) {
     'use strict';
 
+    let token = $cookies.get('token');
+    let userId = JSON.parse( atob(token.split('.')[1]) ).id;
+
     angular.extend(this, $controller('DefaultController', {
       $scope: $scope,
       $stateParams: $stateParams,
       $state: $state
     }));
 
-    // fetch user's info
-    let token = $cookies.get('token');
-    let id = JSON.parse( atob(token.split('.')[1]) ).id;
-    UserSvc.getUserInfo(id)
-    .then(function(res) {
-      $scope.user = res.data;
-      $scope.friends = $scope.user.friends
-    })
-    .catch(function(err) {
-      console.log(err);
-    });
+    function getUserInfo() {
+      UserSvc.getUserInfo(userId)
+      .then(function(res) {
+        $scope.user = res.data;
+        $scope.friends = $scope.user.friends
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+    }
 
-
+    getUserInfo();
 
     // dummy data
     // $scope.friends = [
@@ -51,6 +53,18 @@
           });
         });
       }
+    }
+
+    $scope.removeFriend = function(friendId) {
+      console.log("removing friend...", friendId);
+      UserSvc.removeFriend(userId, friendId)
+        .then(function(resp){
+          console.log('removed friend', resp);
+          getUserInfo();
+        })
+        .catch(function(err){
+          console.error(err);
+        });
     }
   }
 })();

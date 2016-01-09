@@ -42,6 +42,10 @@
       })
     }
 
+    this.removeFriend = function(userId, friendId){
+      return $http.put(`/users/removefriend/${userId}/${friendId}`);
+    }
+
     this.updateToAdminUser = function(user){
       console.log("UserSvc", user)
       let userId = user._id;
