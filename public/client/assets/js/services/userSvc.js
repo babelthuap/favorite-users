@@ -14,6 +14,9 @@
     this.getUserInfo = function(id) {
       return $http.get('/users/' + id);
     }
+    this.getUserInfoUnpopulated = function(id) {
+      return $http.get('/users/unpopulated/' + id);
+    }
 
     this.getAllUsers = function(){
       return $http.get('/users');

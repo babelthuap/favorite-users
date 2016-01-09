@@ -52,10 +52,10 @@ controller: FindFriendsCtrl
     </div>
 
     <div class="grid-block">
-      <div class="grid-content" ng-repeat="friend in filterPeople()">
+      <div class="grid-content" ng-repeat="friend in filterPeople() track by friend._id">
         <friend-card ng-if="allUsers.length" user={{friend}}>
         </friend-card>
-        <a class="button" ng-click="addFriend(friend)">Add Friend</a>
+        <a class="button" ng-click="addFriend(friend._id)">Add Friend</a>
       </div>
     </div>
 

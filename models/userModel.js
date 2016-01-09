@@ -25,7 +25,8 @@ userSchema.methods.token = function() {
   let payload = {
     id: this._id,
     iat: moment().unix(),
-    exp: moment().add(CONFIG.expTime.num, CONFIG.expTime.unit).unix()
+    exp: moment().add(CONFIG.expTime.num, CONFIG.expTime.unit).unix(),
+    friends: this.friends
   };
   return jwt.encode(payload, process.env.JWT_SECRET);
 };

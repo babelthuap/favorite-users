@@ -13,8 +13,6 @@
     //   $state: $state,
     // }));
 
-    console.log('navctrl');
-
     $scope.logout = function(){
       console.log('logout');
       $cookies.remove('token');
