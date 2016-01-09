@@ -26,7 +26,7 @@ userSchema.methods.token = function() {
     id: this._id,
     iat: moment().unix(),
     exp: moment().add(CONFIG.expTime.num, CONFIG.expTime.unit).unix(),
-    friends: this.friends
+    admin: this.admin
   };
   return jwt.encode(payload, process.env.JWT_SECRET);
 };
