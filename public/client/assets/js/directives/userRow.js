@@ -7,35 +7,44 @@ function userRow() {
     scope: {
       data: "@"
     },
-    controller: function($scope, $http) {
+    controller: function(UserSvc, $scope, $http) {
       'use strict';
 
       $scope.user = JSON.parse($scope.data);
+      $scope.updatedUser = JSON.parse($scope.data);
 
       $scope.makeNewAdmin = function(user){
-        console.log("user", user)
         UserSvc.updateToAdminUser(user)
           .then(res => {
           // populateUsers();
-          console.log('Updated to admin successfully', res)
+          console.log('Updated to admin successfully', res);
         }).catch(err => {
-          console.error(err)
+          console.error(err);
         })
       }
 
       $scope.deleteUser = function(user) {
-        console.log(user);
-
-        let id = user._id;
-        $http.delete(`/users/remove/${id}`)
+        $http.delete(`/users/remove/${user._id}`)
           .then(res => {
             // populateUsers();
-            console.log('deleted user')
+            console.log('deleted user');
           })
           .catch(err => {
-            console.log('err', err)
+            console.log('err', err);
           });
       }
+
+      $scope.saveChanges = function() {
+        UserSvc.updateUser($scope.updatedUser)
+          .then(res => {
+            // populateUsers();
+            console.log('updated user');
+          })
+          .catch(err => {
+            console.log('err', err);
+          });
+      }
+
     }
   };
 }

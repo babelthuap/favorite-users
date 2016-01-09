@@ -67,7 +67,13 @@ router.put('/addfriend/:userId/:friendId', (req, res) => {
 
 router.put('/makeadmin/:userId/', (req, res) => {
   User.findByIdAndUpdate(req.params.userId, { $set: {admin: true} }, function(err, user){
-    res.status(err ? 400 : 200).send(err || 'friend added');
+    res.status(err ? 400 : 200).send(err || 'made into admin');
+  })
+})
+
+router.put('/:id', (req, res) => {
+  User.findByIdAndUpdate(req.params.id, { $set: req.body }, function(err, user){
+    res.status(err ? 400 : 200).send(err || 'user updated');
   })
 })
 

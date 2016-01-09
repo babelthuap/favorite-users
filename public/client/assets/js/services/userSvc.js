@@ -23,7 +23,7 @@
     this.getUserInfo = function(id) {
       return $http.get('/users/' + id);
     }
-    
+
     this.getUserInfoUnpopulated = function(id) {
       return $http.get('/users/unpopulated/' + id);
     }
@@ -42,10 +42,20 @@
       })
     }
 
-    this.updateToAdminUser = function(user){
-      console.log("UserSvc", user)
+    this.updateToAdminUser = function(user) {
       let userId = user._id;
       return $http.put(`/users/makeadmin/${userId}`);
+    }
+
+    this.updateUser = function(user) {
+      console.log('in updateUser')
+      console.log(user)
+      return $http.put(`/users/${user._id}`, {
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        address: user.address
+      });
     }
   }
 })();
