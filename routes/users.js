@@ -65,4 +65,10 @@ router.put('/addfriend/:userId/:friendId', (req, res) => {
   })
 })
 
+router.put('/makeadmin/:userId/', (req, res) => {
+  User.findByIdAndUpdate(req.params.userId, { $set: {admin: true} }, function(err, user){
+    res.status(err ? 400 : 200).send(err || 'friend added');
+  })
+})
+
 module.exports = router;

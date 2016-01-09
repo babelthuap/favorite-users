@@ -1,0 +1,48 @@
+<td class='username'>{{user.name}}</td>
+<td class='email'>{{user.email}}</td>
+<td class='phone'>{{user.phone}}</td>
+<td class='address'>{{user.address}}</td>
+<td class='avatar'><img src="{{user.profilePic}}" alt="profilepic" width="50px"></td>
+<td class='editbtn'>
+  <a zf-open="{{user.email}}" class="button">Edit</a>
+  <div zf-modal="" id="{{user.email}}">
+    <div class="grid-block vertical">
+
+      <div class="grid-block">
+        <div class="grid-content">
+          <a zf-close="" class="close-button">×</a>
+          <h1>Editing...</h1>
+        </div>
+      </div>
+
+      <div class="grid-block">
+        <div class="grid-block">
+          <div class="grid-content">
+            <h3>Name</h3>
+          </div>
+        </div>
+        <div class="grid-block">
+          <div class="grid-content">
+            <input type="text" value="{{user.name}}">
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-block">
+        <div class="grid-block">
+          <div class="grid-content">
+            <h3>Email</h3>
+          </div>
+        </div>
+        <div class="grid-block">
+          <div class="grid-content">
+            <input type="text" value="{{user.email}}">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</td>
+<td class='makeadmin' ng-click='makeNewAdmin(user)'>make admin</td>
+<td class='deletebtn' ng-click='deleteUser(user)'>delete</td>

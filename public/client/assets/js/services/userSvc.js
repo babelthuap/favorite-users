@@ -6,6 +6,7 @@
   UserSvc.$inject = ['$http'];
 
   function UserSvc($http) {
+    this.userInfo = null;
 
     this.checkEmail = function(email){
       return $http.post('/users/checkemail', {email: email});
@@ -22,6 +23,7 @@
     this.getUserInfo = function(id) {
       return $http.get('/users/' + id);
     }
+    
     this.getUserInfoUnpopulated = function(id) {
       return $http.get('/users/unpopulated/' + id);
     }
@@ -38,6 +40,12 @@
       .catch(function(err){
         console.error(err);
       })
+    }
+
+    this.updateToAdminUser = function(user){
+      console.log("UserSvc", user)
+      let userId = user._id;
+      return $http.put(`/users/makeadmin/${userId}`);
     }
   }
 })();
