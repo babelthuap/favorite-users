@@ -39,6 +39,10 @@
 
     populateUsers();
 
+    $scope.$on('populateUsers', (event, args) => {
+      populateUsers();
+    })
+
     let sortBy = "name";
     let sortDirection = 1;
     $scope.setSortBy = function(field){
