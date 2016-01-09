@@ -42,6 +42,12 @@
 
     populateUsers();
 
+    let sortBy = "name";
+    $scope.setSortBy = function(field){
+      console.log("field", field)
+      sortBy = field;
+    }
+
     $scope.query = {};    
     $scope.filterPeople = function() {
       let filteredPeople = [].concat($scope.allUsers);
@@ -62,7 +68,17 @@
           return user.phone.replace(/\D/g, "").indexOf(query) !== -1;
         });
       }
-      
+
+      filteredPeople.sort((a, b) => {
+        if (a[sortBy] > b[sortBy]) {
+          return 1;
+        }
+        if (a[sortBy] < b[sortBy]) {
+          return -1;
+        }
+        return 0;
+      });
+
       return filteredPeople;
     }
 
