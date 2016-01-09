@@ -65,6 +65,12 @@ router.put('/addfriend/:userId/:friendId', (req, res) => {
   })
 })
 
+router.put('/removefriend/:userId/:friendId', (req, res) => {
+  User.findByIdAndUpdate(req.params.userId, { $pull: {friends: req.params.friendId} }, function(err, user){
+    res.status(err ? 400 : 200).send(err || 'friend removed');
+  })
+})
+
 router.put('/makeadmin/:userId/', (req, res) => {
   User.findByIdAndUpdate(req.params.userId, { $set: {admin: true} }, function(err, user){
     res.status(err ? 400 : 200).send(err || 'friend added');
