@@ -3,9 +3,9 @@
 
   angular.module('application').controller('NavBarCtrl', NavBarCtrl);
 
-  NavBarCtrl.$inject = ['$cookies', '$scope', '$stateParams', '$state', '$controller'];
+  NavBarCtrl.$inject = ['$cookies', '$scope', '$rootScope', '$stateParams', '$state', '$controller'];
 
-  function NavBarCtrl($cookies, $scope, $stateParams, $state, $controller) {
+  function NavBarCtrl($cookies, $scope, $rootScope, $stateParams, $state, $controller) {
 
     // angular.extend(this, $controller('DefaultController', {
     //   $scope: $scope,
@@ -19,11 +19,11 @@
       $state.go('home');
     }
 
-    $scope.amILoggedIn = function() {
+    $rootScope.amILoggedIn = function() {
       return !!$cookies.get('token');
     }
 
-    $scope.amIAdmin = function() {
+    $rootScope.amIAdmin = function() {
       let token = $cookies.get('token');
       return JSON.parse( atob(token.split('.')[1]) ).admin;
     }
