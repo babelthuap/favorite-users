@@ -44,10 +44,11 @@ controller: AdminCtrl
     <table class="responsive">
       <thead>
         <tr>
-          <th ng-click="setSortBy('name')">Name</th>
-          <th ng-click="setSortBy('email')">Email</th>
-          <th ng-click="setSortBy('phone')">Phone</th>
-          <th ng-click="setSortBy('address')">Address</th>
+          <th ng-repeat="field in ['name', 'email', 'phone', 'address']" ng-click="setSortBy(field)">
+            {{field[0].toUpperCase() + field.slice(1)}}
+            <i class="fa fa-caret-up" ng-show="sortBy() === field && sortDirection() === 1"></i>
+            <i class="fa fa-caret-down" ng-show="sortBy() === field && sortDirection() === -1"></i>
+          </th>
           <th>Profile Image</th>
           <th>Edit</th>
           <th>Make Admin</th>

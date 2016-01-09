@@ -45,6 +45,10 @@
 
     let sortBy = "name";
     let sortDirection = 1;
+
+    $scope.sortBy = () => sortBy;
+    $scope.sortDirection = () => sortDirection;
+
     $scope.setSortBy = function(field){
       if (sortBy === field) {
         sortDirection *= -1;
