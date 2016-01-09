@@ -42,7 +42,11 @@
       })
     }
 
-    this.updateToAdminUser = function(user) {
+    this.removeFriend = function(userId, friendId){
+      return $http.put(`/users/removefriend/${userId}/${friendId}`);
+    }
+
+    this.updateToAdminUser = function(user){
       let userId = user._id;
       return $http.put(`/users/makeadmin/${userId}`);
     }

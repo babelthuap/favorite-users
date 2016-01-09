@@ -57,9 +57,13 @@ controller: ProfileCtrl
     </div>
 
 
-    <div class="grid-block">
-      <friend-card ng-if="friends.length" ng-repeat="friend in filterFriends(query) track by $index" user={{friend}}>
-      </friend-card>
+    <div class="grid-block align-center text-center">
+      <div class="grid-content" ng-repeat="friend in filterFriends(query) track by friend._id">
+        <friend-card ng-if="friends.length" user={{friend}}>
+        </friend-card>
+        <a class="button" ng-click="removeFriend(friend._id)">Remove Friend</a>
+      </div>
+
       <h1 ng-if='!filterFriends(query).length && friends.length'>No friends match your search query</h1>
       <h1 ng-if="!friends.length">You have no friends!</h1>
     </div>
