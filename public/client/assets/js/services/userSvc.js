@@ -24,12 +24,18 @@
 
     this.addFriend = function(userId, friendId){
       $http.put(`/users/addfriend/${userId}/${friendId}`)
-      .then(function(resp){
-        console.log('success', resp);
+      .then(function(res){
+        console.log('success', res);
       })
       .catch(function(err){
         console.error(err);
       })
+    }
+
+    this.updateToAdminUser = function(user){
+      console.log("UserSvc", user)
+      let userId = user._id;
+      return $http.put(`/users/makeadmin/${userId}`)
     }
 
   }

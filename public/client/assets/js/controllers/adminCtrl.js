@@ -10,11 +10,6 @@
       $scope: $scope
     }));
 
-    // dummy data
-    $scope.user = {
-      name: "PAMNNN"
-    };
-
     $scope.allUsers = [];
     
     if(UserSvc.userInfo) {
@@ -80,6 +75,17 @@
       });
 
       return filteredPeople;
+    }
+
+    $scope.makeNewAdmin = function(user){
+      console.log("user", user)
+      UserSvc.updateToAdminUser(user)
+        .then(res => {
+        populateUsers();  
+        console.log('Updated to admin successfully', res)
+      }).catch(err => {
+        console.error(err)
+      })
     }
 
     $scope.deleteUser = function(user) {

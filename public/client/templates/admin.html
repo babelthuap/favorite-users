@@ -61,7 +61,7 @@ controller: AdminCtrl
           <td class='address'>{{user.address}}</td>
           <td class='avatar'><img src="{{user.profilePic}}" alt="profilepic" width="50px"></td>
           <td class='editbtn'>edit</td>
-          <td class='makeadmin'>make admin</td>
+          <td class='makeadmin' ng-click=makeNewAdmin(user)>make admin</td>
           <td class='deletebtn' ng-click=deleteUser(user)>delete</td>
         </tr>
       </tbody>
