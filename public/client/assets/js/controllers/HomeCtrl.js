@@ -30,19 +30,18 @@
 
     $scope.signup = function(email){
       var email = $scope.email;
-      console.log(email);
-      $scope.$storage.email = email;
-      $state.go('signup');
+
+      UserSvc.checkEmail(email)
+      .then(function(resp){
+        console.log(resp)
+        $scope.$storage.email = email;
+        $state.go('signup');
+      })
+      .catch(function(err){
+        // email is taken
+        console.log(err);
+      })
+
     };
   }
 })();
-
-// run(run);
-  // run.$inject = ['$rootScope'];
-  //   console.log('working')
-
-
-  // function run($rootScope) {
-  //   // $rootScope.$storage = $localStorage;
-  //   // $rootScope.$storage.$email = [];
-  // }

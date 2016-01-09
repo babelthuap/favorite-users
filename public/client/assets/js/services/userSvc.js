@@ -7,6 +7,14 @@
 
   function UserSvc($http) {
 
+    this.checkEmail = function(email){
+      return $http.post('/users/checkemail', {email: email});
+    }
+
+    this.register = function(newUser){
+      return $http.post('/users/register', newUser);
+    }
+
     this.login = function(info) {
       return $http.post('/users/login', info);
     }

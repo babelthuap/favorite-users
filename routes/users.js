@@ -14,12 +14,19 @@ router.get('/', (req, res) => {
     });
     res.send(users);
   })
-})
+});
+
+router.post('/checkemail', (req, res) => {
+  User.findOne({email: req.body.email}, (err, user) => {
+    if (err || user) return res.status(400).send(err || 'email is already in use');
+    res.send(req.body.email);
+  });
+});
 
 router.post('/register', (req, res) => {
   User.register(req.body, (err, token) => {
     if (err) return res.status(400).send(err);
-    res.cookie('token', token).send('user created');
+    res.cookie('token', token).send();
   });
 });
 

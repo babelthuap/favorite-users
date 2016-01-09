@@ -3,9 +3,9 @@
 
   angular.module('application').controller('SignUpCtrl', SignUpCtrl);
 
-  SignUpCtrl.$inject = ['$scope', '$stateParams', '$state', '$controller', '$http', '$localStorage'];
+  SignUpCtrl.$inject = ['UserSvc', '$scope', '$stateParams', '$state', '$controller', '$http', '$localStorage'];
 
-  function SignUpCtrl($scope, $stateParams, $state, $controller, $http, $localStorage) {
+  function SignUpCtrl(UserSvc, $scope, $stateParams, $state, $controller, $http, $localStorage) {
     angular.extend(this, $controller('DefaultController', {
       $scope: $scope,
       $stateParams: $stateParams,
@@ -22,7 +22,7 @@
       return $scope.pic ? 'data:image/jpeg;base64,' + $scope.pic.base64 : "http://placehold.it/250x200";
     }
 
-    $scope.allDone = function(user){     
+    $scope.allDone = function(user){
       var newUser = {
         name: user.name,
         phone: user.phone,
@@ -34,9 +34,12 @@
       }
 
       console.log("user", newUser)
-      $http.post('/users/register', newUser).then(function cb(res){
-        $state.go('profile')
-      }).catch(function cb(error){
+
+      UserSvc.register(newUser)
+      .then(function(resp){
+        $state.go('profile');
+      })
+      .catch(function(error){
         console.log("error:", error)
       })
     }
