@@ -26,7 +26,10 @@
         </div>
         <div class="menu-group-right">
           <ul class="primary condense menu-bar">
-            <li><a href="#" class="button alert" ng-click="logout()">Log Out</a></li>
+            <li><a href="#" class="button alert" ui-sref="profile" ng-if="amILoggedIn()">Profile</a></li>
+            <li><a href="#" class="button alert" ui-sref="findfriends" ng-if="amILoggedIn()">Find Friends</a></li>
+            <li><a href="#" class="button alert" ui-sref="admin" ng-if="amILoggedIn() && amIAdmin()">Admin</a></li>
+            <li><a href="#" class="button alert" ng-click="logout()" ng-if="amILoggedIn()">Log Out</a></li>
           </ul>
         </div>
       </div>

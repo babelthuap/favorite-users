@@ -19,5 +19,14 @@
       $state.go('home');
     }
 
+    $scope.amILoggedIn = function() {
+      return !!$cookies.get('token');
+    }
+
+    $scope.amIAdmin = function() {
+      let token = $cookies.get('token');
+      return JSON.parse( atob(token.split('.')[1]) ).admin;
+    }
+
   }
 })();
