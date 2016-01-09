@@ -17,9 +17,6 @@ controller: HomeCtrl
         <form name="signUpEmail">
           <input type="email" placeholder="email" ng-model="email" required>
           <a class="button" ng-click="signup()" ng-class="{disabled: !email}">Sign Up!</a>
-          <span ng-show="signupError">{{signupError}}</span>
-          <a class="button" href="#" title="My notification" content="Notification example" color="success" autoclose="3000" zf-notify="main-notifications">Dynamic Notification</a>
-          <zf-notification-set id="main-notifications"></zf-notification-set>
         </form>
       </div>
     </div>
@@ -30,7 +27,6 @@ controller: HomeCtrl
           <input type="email" ng-model="login.email" placeholder="email" required>
           <input type="password" ng-model="login.password" placeholder="password" required>
           <a class="button" ng-click="loginUser()" ng-class="{disabled: !login.email || !login.password}">Log In</a>
-          <span ng-show="loginError">{{loginError}}</span>
         </form>
         <div class="grid-block">
           <div class="grid-content text-right">
@@ -40,4 +36,17 @@ controller: HomeCtrl
       </div>
     </div>
   </div>
+
+  <div class="grid-block">
+    <error-message type="loginError"></error-message>
+  </div>
+
+
+  <!-- <div class="grid-block align-center">
+    <div class="card warning fadeIn shake slideOutDown" ng-show="loginError">
+      <div class="card-section">
+        <span class="errorMessage">Incorrect email or password</span>
+      </div>
+    </div>
+  </div> -->
 </div>
