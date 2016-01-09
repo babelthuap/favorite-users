@@ -3,9 +3,9 @@
 
   angular.module('application').controller('HomeCtrl', HomeCtrl);
 
-  HomeCtrl.$inject = ['UserSvc', '$cookies', '$scope', '$stateParams', '$state', '$controller', '$localStorage'];
+  HomeCtrl.$inject = ['$timeout', 'FoundationApi', 'UserSvc', '$cookies', '$scope', '$stateParams', '$state', '$controller', '$localStorage'];
 
-  function HomeCtrl(UserSvc, $cookies, $scope, $stateParams, $state, $controller, $localStorage) {
+  function HomeCtrl($timeout, FoundationApi, UserSvc, $cookies, $scope, $stateParams, $state, $controller, $localStorage) {
 
     angular.extend(this, $controller('DefaultController', {
       $scope: $scope,
@@ -23,6 +23,7 @@
       })
       .catch(function(err) {
         console.log(err);
+        // $scope.$broadcast('', err);
       });
     }
 
@@ -40,8 +41,14 @@
       .catch(function(err){
         // email is taken
         console.log(err);
+        $scope.signupError = err.data;
+        $timeout(function(){
+          $scope.signupError = undefined;
+          $scope.$apply();
+        }, 2500)
       })
-
     };
+
+
   }
 })();

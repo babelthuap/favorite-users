@@ -14,9 +14,9 @@ controller: HomeCtrl
     <div class="grid-block">
       <div class="grid-content">
         <h3>Sign Up</h3>
-        <form>
-          <input type="email" placeholder="email" ng-model="email">
-          <a href="" class="button" ng-click="signup()">Sign Up!</a>
+        <form name="signUpEmail">
+          <input type="email" placeholder="email" ng-model="email" required>
+          <a class="button" ng-click="signup()" ng-class="{disabled: !email}">Sign Up!</a>
         </form>
       </div>
     </div>
@@ -26,7 +26,7 @@ controller: HomeCtrl
         <form ng-submit="loginUser()">
           <input type="email" ng-model="login.email" placeholder="email" required>
           <input type="password" ng-model="login.password" placeholder="password" required>
-          <input class="button" type="submit">
+          <a class="button" ng-click="loginUser()" ng-class="{disabled: !login.email || !login.password}">Log In</a>
         </form>
         <div class="grid-block">
           <div class="grid-content text-right">
@@ -36,4 +36,17 @@ controller: HomeCtrl
       </div>
     </div>
   </div>
+
+  <div class="grid-block">
+    <error-message type="loginError"></error-message>
+  </div>
+
+
+  <!-- <div class="grid-block align-center">
+    <div class="card warning fadeIn shake slideOutDown" ng-show="loginError">
+      <div class="card-section">
+        <span class="errorMessage">Incorrect email or password</span>
+      </div>
+    </div>
+  </div> -->
 </div>
