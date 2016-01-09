@@ -18,7 +18,6 @@
     $scope.$storage = $localStorage;
 
     $scope.userImage = function(){
-      console.log($scope.pic);
       return $scope.pic ? 'data:image/jpeg;base64,' + $scope.pic.base64 : "http://placehold.it/250x200";
     }
 
@@ -42,6 +41,10 @@
       .catch(function(error){
         console.log("error:", error)
       })
+    }
+
+    $scope.validate = function(){
+      return $scope.user && $scope.user.name && $scope.user.password && ($scope.user.password === $scope.user.confirmpassword) && $scope.pic;
     }
   }
 })();

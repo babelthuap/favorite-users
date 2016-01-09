@@ -23,11 +23,12 @@ controller: SignUpCtrl
       <div class="grid-block">
         <div class="grid-content">
           <form>
-            <input type="text" placeholder="Name" ng-model="user.name">
+            <input type="text" placeholder="Name" ng-model="user.name" ng-required>
             <input type="tel" placeholder="Phone Number" ng-model="user.phone">
-            <input rows="2" type="text" placeholder="Address" ng-model="user.address">
-            <input type="password" placeholder="password" ng-model="user.password">
-            <input type="password" placeholder="Confirm Password" ng-model="user.confirmpassword">
+            <input type="text" placeholder="Address" ng-model="user.address">
+            <input type="password" placeholder="password" ng-model="user.password" required>
+            <input type="password" placeholder="Confirm Password" ng-model="user.confirmpassword" required>
+            <span ng-hide="!user.password || user.password === user.confirmpassword">Passwords Must Match!</span>
           </form>
         </div>
       </div>
@@ -44,9 +45,10 @@ controller: SignUpCtrl
     <div class="grid-block">
       <div class="grid-block">
         <div class="grid-content">
-          <button ng-click="allDone(user)">All Done!</button>
+          <a class="button" ng-click="allDone(user)" ng-class="{disabled: !validate()}">All Done!</a>
         </div>
       </div>
     </div>
   </div>
+
 </div>

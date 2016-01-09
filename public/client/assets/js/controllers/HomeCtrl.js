@@ -3,9 +3,9 @@
 
   angular.module('application').controller('HomeCtrl', HomeCtrl);
 
-  HomeCtrl.$inject = ['UserSvc', '$cookies', '$scope', '$stateParams', '$state', '$controller', '$localStorage'];
+  HomeCtrl.$inject = ['FoundationApi', 'UserSvc', '$cookies', '$scope', '$stateParams', '$state', '$controller', '$localStorage'];
 
-  function HomeCtrl(UserSvc, $cookies, $scope, $stateParams, $state, $controller, $localStorage) {
+  function HomeCtrl(FoundationApi, UserSvc, $cookies, $scope, $stateParams, $state, $controller, $localStorage) {
 
     angular.extend(this, $controller('DefaultController', {
       $scope: $scope,
@@ -13,6 +13,8 @@
       $state: $state,
       $localStorage: $localStorage
     }));
+
+    FoundationApi.
 
     $scope.welcome = 'Welcome To Friend Finder!';
 
@@ -23,6 +25,7 @@
       })
       .catch(function(err) {
         console.log(err);
+        $scope.loginError = err.data;
       });
     }
 
@@ -40,6 +43,7 @@
       .catch(function(err){
         // email is taken
         console.log(err);
+        $scope.signupError = err.data;
       })
 
     };
