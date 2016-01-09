@@ -17,10 +17,27 @@
 
     $scope.allUsers = [];
     
-    function populateUsers() {
-      UserSvc.getAllUsers().then(resp => {
-        $scope.allUsers = resp.data;
+    if(UserSvc.userInfo) {
+      $scope.user = UserSvc.userInfo;
+    } else {
+      UserSvc.getUserInfo()
+      .then(function(res) {
+        UserSvc.userInfo = res.data;
+        $scope.user = UserSvc.userInfo;
       })
+      .catch(function(err) {
+        console.log(err);
+      });
+    }
+
+    function populateUsers() {
+      UserSvc.getAllUsers()
+        .then(res => {
+          $scope.allUsers = res.data.filter(user => !user.admin);
+        })
+        .catch(err => {
+          console.log('err', err)
+        });
     }
 
     populateUsers();
