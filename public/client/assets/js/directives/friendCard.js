@@ -9,7 +9,7 @@ function friendCard() {
     },
     controller: function($scope) {
       'use strict';
-      
+      $scope.data = JSON.parse($scope.user);
     }
   };
 }

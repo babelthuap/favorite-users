@@ -23,6 +23,7 @@
       })
       .catch(function(err) {
         console.log(err);
+        $scope.loginError = err.data;
         // $scope.$broadcast('', err);
       });
     }
