@@ -38,8 +38,11 @@
     populateUsers();
 
     let sortBy = "name";
+    let sortDirection = 1;
     $scope.setSortBy = function(field){
-      console.log("field", field)
+      if (sortBy === field) {
+        sortDirection *= -1;
+      }
       sortBy = field;
     }
 
@@ -66,10 +69,10 @@
 
       filteredPeople.sort((a, b) => {
         if (a[sortBy] > b[sortBy]) {
-          return 1;
+          return sortDirection;
         }
         if (a[sortBy] < b[sortBy]) {
-          return -1;
+          return -sortDirection;
         }
         return 0;
       });
