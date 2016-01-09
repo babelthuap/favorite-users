@@ -3,9 +3,9 @@
 
   angular.module('application').controller('ProfileCtrl', ProfileCtrl);
 
-  ProfileCtrl.$inject = ['UserSvc', '$cookies', '$scope', '$stateParams', '$state', '$controller', 'jwtHelper'];
+  ProfileCtrl.$inject = ['UserSvc', '$cookies', '$scope', '$stateParams', '$state', '$controller'];
 
-  function ProfileCtrl(UserSvc, $cookies, $scope, $stateParams, $state, $controller, jwtHelper) {
+  function ProfileCtrl(UserSvc, $cookies, $scope, $stateParams, $state, $controller) {
     'use strict';
 
     angular.extend(this, $controller('DefaultController', {
@@ -14,27 +14,20 @@
       $state: $state
     }));
 
-    // fetch user's info
-    let token = $cookies.get('token');
-    let id = jwtHelper.decodeToken(token).id;
-    UserSvc.getUserInfo(id)
-    .then(function(res) {
-      $scope.user = res.data;
-      $scope.friends = $scope.user.friends
-    })
-    .catch(function(err) {
-      console.log(err);
-    });
-
-
-
-    // dummy data
-    // $scope.friends = [
-    //   {name: "Nicholas", email: "n@yahoo.com", phone: "111-111-1111", address: "123 Minnesota"},
-    //   {name: "Asami", email: "a@gmail.com", phone: "222-222-2222", address: "345 Tokyo"},
-    //   {name: "Zarathustra", email: "z@spake.co", phone: "333-333-3333", address: "000 Persia"},
-    //   {name: "Patrick", email: "p@gmail.com", phone: "444-444-4444", address: "789 California"}
-    // ];
+    if(UserSvc.userInfo) {
+      $scope.user = UserSvc.userInfo;
+      $scope.friends = $scope.user.friends;  
+    } else {
+      UserSvc.getUserInfo()
+      .then(function(res) {
+        UserSvc.userInfo = res.data;
+        $scope.user = UserSvc.userInfo;
+        $scope.friends = $scope.user.friends;
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+    }
 
     $scope.friends = [];
     $scope.filterFriends = function(query) {

@@ -3,15 +3,18 @@
 
   angular.module('application').service('UserSvc', UserSvc);
 
-  UserSvc.$inject = ['$http'];
+  UserSvc.$inject = ['$http', '$cookies', 'jwtHelper'];
 
-  function UserSvc($http) {
+  function UserSvc($http, $cookies, jwtHelper) {
+    this.userInfo = null;
 
     this.login = function(info) {
       return $http.post('/users/login', info);
     }
 
-    this.getUserInfo = function(id) {
+    this.getUserInfo = function() {
+      let token = $cookies.get('token');
+      let id = jwtHelper.decodeToken(token).id;
       return $http.get('/users/' + id);
     }
 
@@ -28,5 +31,6 @@
         console.error(err);
       })
     }
+
   }
 })();
