@@ -1,0 +1,16 @@
+@font-face {
+  font-family: "Cantarell";
+  src: url('css/Cantarell-Regular-webfont.ttf') format('truetype'),
+       url('css/Cantarell-Regular-webfont.svg') format('svg');
+}
+.grid-container {
+  padding: 50px;
+}
+
+.inputbox {
+  margin-left:20px;
+}
+
+h1 {
+  font-family: Cantarell;
+}

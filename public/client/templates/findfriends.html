@@ -1,0 +1,63 @@
+---
+name: findfriends
+url: /findfriends
+animationIn: fadeIn
+animationOut: fadeOut
+controller: FindFriendsCtrl
+---
+
+<div class="grid-container">
+
+  <div class="grid-block align-center text-center">
+
+    <div class="grid-block">
+      <div class="grid-content text-left">
+        <a ui-sref="profile" class="button radius"><strong>Back To Profile</strong></a>
+      </div>
+      <div class="grid-content">
+        <h1>{{welcome}}</h1>
+      </div>
+    </div>
+
+    <div class="grid-block">
+      <div class="grid-block">
+        <div class="grid-content">
+          <input type="text" placeholder="Name" ng-model="query.name">
+        </div>
+      </div>
+      <div class="grid-block">
+        <div class="grid-content">
+          <input type="text" placeholder="Email" ng-model="query.email">
+        </div>
+      </div>
+      <div class="grid-block">
+        <div class="grid-content">
+          <label for="range">
+            <span class="inline-label">
+              <span class="form-label">Within</span>
+              <select name="range" id="range" ng-model="query.range">
+                <option value="">Select A Range</option>
+                <option value="5">5 miles</option>
+                <option value="10">10 miles</option>
+                <option value="15">15 miles</option>
+                <option value="20">20 miles</option>
+                <option value="25">25 miles</option>
+                <option value="50">50 miles</option>
+                <option value="100">100 miles</option>
+              </select>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-block">
+      <div class="grid-content" ng-repeat="friend in allUsers | filter : query">
+        <friend-card ng-if="allUsers.length" user={{friend}}>
+        </friend-card>
+        <a class="button" ng-click="addFriend(friend._id, $index)">Add Friend</a>
+      </div>
+    </div>
+
+  </div>
+</div>

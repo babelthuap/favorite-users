@@ -1,0 +1,43 @@
+
+<!doctype html>
+<html lang="en" ng-app="application">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Friend Finder</title>
+  <link type="text/css" media="screen" rel="stylesheet" href="./assets/responsive-tables.css" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href="./assets/css/app.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="./assets/responsive-tables.js"></script>
+  <script src="./assets/js/foundation.js"></script>
+  <script src="./assets/js/templates.js"></script>
+  <script src="./assets/js/routes.js"></script>
+  <script src="./assets/js/app.js"></script>
+</head>
+<body>
+  <div class="grid-frame vertical">
+    <div class="grid-content shrink" style="padding: 0;" ng-controller="NavBarCtrl">
+      <div class="menu-group primary">
+        <div class="menu-group-left">
+          <ul class="primary condense menu-bar">
+            <li><img src="./assets/etc/imageedit_1_9606717757.gif" alt=""></li>
+            <li><a><strong>Friend Finder</strong></a></li>
+          </ul>
+        </div>
+        <div class="menu-group-right">
+          <ul class="primary condense menu-bar">
+            <li><a href="#" class="button alert" ui-sref="profile" ng-if="amILoggedIn()">Profile</a></li>
+            <li><a href="#" class="button alert" ui-sref="findfriends" ng-if="amILoggedIn()">Find Friends</a></li>
+            <li><a href="#" class="button alert" ui-sref="admin" ng-if="amILoggedIn() && amIAdmin()">Admin</a></li>
+            <li><a href="#" class="button alert" ng-click="logout()" ng-if="amILoggedIn()">Log Out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div ui-view class="grid-content">
+    </div>
+  </div>
+</body>
+</html>

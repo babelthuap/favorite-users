@@ -1,0 +1,106 @@
+---
+name: profile
+url: /profile
+controller: ProfileCtrl
+---
+
+<div class="grid-container">
+  <div class="grid-block vertical">
+
+
+    <div class="grid-block">
+      <div class="medium-5 grid-block">
+        <div class="grid-content">
+          <img ng-src={{user.profilePic}}>
+        </div>
+      </div>
+      <div class="medium-7 grid-block vertical">
+        <div class="grid-block">
+          <div class="grid-content text-center">
+            <h1>Hey there, {{user.name}}</h1>
+          </div>
+        </div>
+        <div class="grid-block vertical">
+          <div class="grid-container">
+
+            <div class="grid-content">
+              <h3>Your Info:</h3>
+            </div>
+
+            <a zf-open="basicModal" class="button" ng-click="initializeModal()">Edit Profile</a>
+
+            <div zf-modal="" id="basicModal">
+              <a zf-close="" class="close-button">×</a>
+              <div class="grid-block">
+                <div class="grid-content">
+                  <h1>Editing...</h1>
+                </div>
+              </div>
+              <div class="grid-block">
+                <div class="grid-content">
+                  <label>Name</label>
+                  <input type="text" ng-model="updatedUser.name">
+                </div>
+              </div>
+              <div class="grid-block">
+                <div class="grid-content">
+                  <label>Email</label>
+                  <input type="text" ng-model="updatedUser.email">
+                </div>
+              </div>
+              <div class="grid-block">
+                <div class="grid-content">
+                  <label>Phone</label>
+                  <input type="text" ng-model="updatedUser.phone">
+                </div>
+              </div>
+              <div class="grid-block">
+                <div class="grid-content">
+                  <label>Address</label>
+                  <input type="text" ng-model="updatedUser.address">
+                  <a zf-close="" class="button" ng-click="saveChanges()">Save Changes</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid-block">
+              <div class="grid-content">
+                <table role="grid">
+                  <tbody>
+                    <tr ng-repeat="field in ['name', 'email', 'phone', 'address'] track by $index">
+                      <td><strong>{{field.toUpperCase()}}</strong></td>
+                      <td>{{user[field]}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-block">
+      <div class="grid-content">
+        <input type="text" placeholder="Search friends by name or address" ng-model="query">
+      </div>
+      <div class="grid-content text-right">
+        <a ui-sref="findfriends" class="button radius"><strong>Find New Friends</strong></a>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="grid-block align-center text-center">
+    <div class="grid-content" ng-repeat="friend in friends | filter : query">
+      <friend-card ng-if="friends.length" user={{friend}}>
+      </friend-card>
+      <a class="button" ng-click="removeFriend(friend._id)">Remove Friend</a>
+    </div>
+    <div class="grid-content">
+      <h1 ng-if='!(friends | filter : query).length && !noFriends'>No friends match your search query</h1>
+      <h1 ng-if="noFriends">You have no friends!</h1>
+    </div>
+  </div>
+
+</div>

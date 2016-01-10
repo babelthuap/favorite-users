@@ -1,0 +1,48 @@
+---
+name: home
+url: /
+animationIn: fadeIn
+animationOut: fadeOut
+controller: HomeCtrl
+---
+<div class="grid-block">
+
+  <div class="grid-container">
+
+    <div class="grid-block">
+      <div class="grid-content text-center">
+        <h1>{{welcome}}</h1>
+      </div>
+    </div>
+    <div class="grid-block">
+      <div class="grid-block vertical">
+        <div class="grid-content">
+          <h3>Sign Up</h3>
+          <form name="signUpEmail">
+            <input type="email" class="inputbox" placeholder="email" ng-model="email" required>
+            <a class="button" ng-click="signup()" ng-class="{disabled: !email}">Sign Up!</a>
+          </form>
+        </div>
+        <div class="grid-block">
+          <error-message type="signupError"></error-message>
+        </div>
+      </div>
+      <div class="grid-block vertical">
+        <div class="grid-content">
+          <h3>Log In</h3>
+          <form ng-submit="loginUser()">
+            <input type="email" ng-model="login.email" placeholder="email" required>
+            <input type="password" ng-model="login.password" placeholder="password" required>
+            <div class="v-align text-center">
+              <a class="button" ng-click="loginUser()" ng-class="{disabled: !login.email || !login.password}">Log In</a>
+              <a href="#" class="align-center">Forgot password?</a>
+            </div>
+          </form>
+        </div>
+        <div class="grid-block">
+          <error-message type="loginError"></error-message>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
