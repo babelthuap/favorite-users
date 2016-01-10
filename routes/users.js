@@ -81,12 +81,12 @@ router.put('/makeadmin/:userId/', authenticateAdmin, (req, res) => {
 
 router.put('/:id', authenticate, (req, res) => {
   //admin or that same user can change
-  if(!req.decodedToken.admin && req.param.id !== req.decodedToken.id) {
-    return res.status(401).send('authorization required');
-  }
+  // if(!req.decodedToken.admin && req.param.id !== req.decodedToken.id) {
+  //   return res.status(401).send('authorization required');
+  // }
 
   User.findByIdAndUpdate(req.params.id, { $set: req.body }, function(err, user){
-    res.status(err ? 400 : 200).send(err || 'user updated');
+    res.status(err ? 400 : 200).send(err || user);
   })
 })
 
