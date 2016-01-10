@@ -2,8 +2,7 @@
 
 const express = require('express')
     , User    = require('../models/userModel')
-    , authenticate = require('../util/authMiddleware')
-    , authenticateAdmin = require('../util/authAdminMiddleware')
+    , authenticate = require('../util/authMiddleware');
 
 let router = express.Router();
 
@@ -55,12 +54,6 @@ router.get('/unpopulated/:id', authenticate, (req, res) => {
   });
 });
 
-router.delete('/remove/:id', authenticateAdmin, (req, res) => {
-  User.findByIdAndRemove(req.params.id, (err, user) => {
-    res.status(err? 400 : 200).send(err ? 'user delete failed': 'user deleted!')
-  })
-});
-
 router.put('/addfriend/:userId/:friendId', authenticate, (req, res) => {
   User.findByIdAndUpdate(req.params.userId, { $push: {friends: req.params.friendId} }, function(err, user){
     res.status(err ? 400 : 200).send(err || 'friend added');
@@ -73,18 +66,7 @@ router.put('/removefriend/:userId/:friendId', authenticate, (req, res) => {
   })
 })
 
-router.put('/makeadmin/:userId/', authenticateAdmin, (req, res) => {
-  User.findByIdAndUpdate(req.params.userId, { $set: {admin: true} }, function(err, user){
-    res.status(err ? 400 : 200).send(err || 'made into admin');
-  })
-})
-
-router.put('/:id', authenticate, (req, res) => {
-  //admin or that same user can change
-  // if(!req.decodedToken.admin && req.param.id !== req.decodedToken.id) {
-  //   return res.status(401).send('authorization required');
-  // }
-
+router.put('/edit/:id', authenticate, (req, res) => {
   User.findByIdAndUpdate(req.params.id, { $set: req.body }, function(err, user){
     res.status(err ? 400 : 200).send(err || user);
   })

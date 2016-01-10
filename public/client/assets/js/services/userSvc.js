@@ -3,9 +3,9 @@
 
   angular.module('application').service('UserSvc', UserSvc);
 
-  UserSvc.$inject = ['$http', "$cookies"];
+  UserSvc.$inject = ['$http'];
 
-  function UserSvc($http, $cookies) {
+  function UserSvc($http) {
     this.userInfo = null;
 
     this.checkEmail = function(email){
@@ -46,18 +46,8 @@
       return $http.put(`/users/removefriend/${userId}/${friendId}`);
     }
 
-    this.updateToAdminUser = function(user){
-      let userId = user._id;
-      return $http.put(`/users/makeadmin/${userId}`);
-    }
-
     this.updateUser = function(user) {
-
-      // let token = $cookies.get('token');
-      // let id = JSON.parse( atob(token.split('.')[1]) ).id;
-      // console.log('in updateUser')
-      // console.log(user)
-      return $http.put(`/users/${user._id}`, {
+      return $http.put(`/users/edit/${user._id}`, {
         name: user.name,
         email: user.email,
         phone: user.phone,

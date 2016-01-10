@@ -7,7 +7,7 @@ function userRow() {
     scope: {
       data: "@"
     },
-    controller: function(UserSvc, $scope, $http) {
+    controller: function(AdminSvc, $scope, $http) {
       'use strict';
 
       $scope.user = JSON.parse($scope.data);
@@ -17,8 +17,8 @@ function userRow() {
         $scope.$emit('populateUsers');
       }
 
-      $scope.makeNewAdmin = function(user){
-        UserSvc.updateToAdminUser(user)
+      $scope.makeAdmin = function(user){
+        AdminSvc.makeAdmin(user)
           .then(res => {
           populateUsers();
           console.log('Updated to admin successfully', res);
@@ -27,8 +27,8 @@ function userRow() {
         })
       }
 
-      $scope.deleteUser = function(user) {
-        $http.delete(`/users/remove/${user._id}`)
+      $scope.removeUser = function(user) {
+        AdminSvc.removeUser(user)
           .then(res => {
             populateUsers();
             console.log('deleted user');
@@ -38,8 +38,8 @@ function userRow() {
           });
       }
 
-      $scope.saveChanges = function() {
-        UserSvc.updateUser($scope.updatedUser)
+      $scope.editUser = function() {
+        AdminSvc.editUser($scope.updatedUser)
           .then(res => {
             populateUsers();
             console.log('updated user');
