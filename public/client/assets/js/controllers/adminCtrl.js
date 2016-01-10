@@ -3,9 +3,9 @@
 
   angular.module('application').controller('AdminCtrl', AdminCtrl);
 
-  AdminCtrl.$inject = ['$cookies', '$state', '$scope', '$rootScope', '$controller', '$http', '$stateParams', 'UserSvc']
+  AdminCtrl.$inject = ['$cookies', '$state', '$scope', '$rootScope', '$controller', '$stateParams', 'UserSvc']
 
-  function AdminCtrl($cookies, $state, $scope, $rootScope, $controller, $http, $stateParams, UserSvc) {
+  function AdminCtrl($cookies, $state, $scope, $rootScope, $controller, $stateParams, UserSvc) {
     if (!$rootScope.amILoggedIn()) {
       return $state.go('home');
     }
