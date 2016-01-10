@@ -6,12 +6,12 @@ const jwt    = require('jwt-simple')
     , User   = require('../models/userModel');
 
 module.exports = function(req, res, next) {
-  if (!req.headers.authorization) {
+  let token = req.cookies.token;
+
+  if (!token) {
     return res.status(401).send('authorization required');
   }
 
-  let token = req.headers.authorization.replace('Bearer ', '');
-  
   try {
     var decoded = jwt.decode(token, process.env.JWT_SECRET);
   } catch (e) {

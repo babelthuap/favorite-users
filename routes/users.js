@@ -1,11 +1,12 @@
 'use strict';
 
 const express = require('express')
-    , User    = require('../models/userModel');
+    , User    = require('../models/userModel')
+    , authenticate = require('../util/authMiddleware')
 
 let router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', authenticate, (req, res) => {
   User.find({}, (err, users) => {
     if (err) return res.status(400).send(err);
     users.forEach(user => {
@@ -37,7 +38,7 @@ router.post('/login', (req, res) => {
   });
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', authenticate, (req, res) => {
   User.findById(req.params.id, (err, user) => {
     if (err || !user) return res.status(400).send(err || 'user not found');
     user.password = null;
@@ -45,7 +46,7 @@ router.get('/:id', (req, res) => {
   }).populate('friends');
 });
 
-router.get('/unpopulated/:id', (req, res) => {
+router.get('/unpopulated/:id', authenticate, (req, res) => {
   User.findById(req.params.id, (err, user) => {
     if (err || !user) return res.status(400).send(err || 'user not found');
     user.password = null;
@@ -53,31 +54,31 @@ router.get('/unpopulated/:id', (req, res) => {
   });
 });
 
-router.delete('/remove/:id', (req, res) => {
+router.delete('/remove/:id', authenticate, (req, res) => {
   User.findByIdAndRemove(req.params.id, (err, user) => {
     res.status(err? 400 : 200).send(err ? 'user delete failed': 'user deleted!')
   })
 });
 
-router.put('/addfriend/:userId/:friendId', (req, res) => {
+router.put('/addfriend/:userId/:friendId', authenticate, (req, res) => {
   User.findByIdAndUpdate(req.params.userId, { $push: {friends: req.params.friendId} }, function(err, user){
     res.status(err ? 400 : 200).send(err || 'friend added');
   })
 })
 
-router.put('/removefriend/:userId/:friendId', (req, res) => {
+router.put('/removefriend/:userId/:friendId', authenticate, (req, res) => {
   User.findByIdAndUpdate(req.params.userId, { $pull: {friends: req.params.friendId} }, function(err, user){
     res.status(err ? 400 : 200).send(err || 'friend removed');
   })
 })
 
-router.put('/makeadmin/:userId/', (req, res) => {
+router.put('/makeadmin/:userId/', authenticate, (req, res) => {
   User.findByIdAndUpdate(req.params.userId, { $set: {admin: true} }, function(err, user){
     res.status(err ? 400 : 200).send(err || 'made into admin');
   })
 })
 
-router.put('/:id', (req, res) => {
+router.put('/:id', authenticate, (req, res) => {
   User.findByIdAndUpdate(req.params.id, { $set: req.body }, function(err, user){
     res.status(err ? 400 : 200).send(err || 'user updated');
   })
