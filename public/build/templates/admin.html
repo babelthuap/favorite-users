@@ -1,0 +1,59 @@
+
+<div class="grid-container">
+
+  <div class="grid-block vertical">
+    <div class="grid-block">
+      <div class="grid-content">
+        <h1>Welcome, {{user.name}}!</h1>
+      </div>
+    </div>
+    <hr>
+    <div class="grid-block">
+      <div class="grid-content">
+        <h3>Filter by:</h3>
+      </div>
+    </div>
+    <div class="grid-block">
+      <div class="grid-block">
+        <div class="grid-content">
+          <input type="text" placeholder="Name" ng-model="query.name">
+        </div>
+      </div>
+      <div class="grid-block">
+        <div class="grid-content">
+          <input type="text" placeholder="Email" ng-model="query.email">
+        </div>
+      </div>
+      <div class="grid-block">
+        <div class="grid-content">
+          <input type="text" placeholder="Phone" ng-model="query.phone">
+        </div>
+      </div>
+      <div class="grid-block">
+        <div class="grid-content">
+          <input type="text" placeholder="Address" ng-model="query.address">
+        </div>
+      </div>
+    </div>
+
+    <table class="responsive">
+      <thead>
+        <tr>
+          <th ng-repeat="field in ['name', 'email', 'phone', 'address']" ng-click="setSortBy(field)">
+            {{field[0].toUpperCase() + field.slice(1)}}
+            <i class="fa fa-caret-up" ng-show="sortBy() === field && sortDirection() === 1"></i>
+            <i class="fa fa-caret-down" ng-show="sortBy() === field && sortDirection() === -1"></i>
+          </th>
+          <th>Profile Image</th>
+          <th>Edit</th>
+          <th>Make Admin</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="user in filterPeople()" user-row data={{user}}>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

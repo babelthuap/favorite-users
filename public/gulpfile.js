@@ -174,7 +174,7 @@ gulp.task('default', ['server'], function () {
   gulp.watch(['./client/assets/js/**/*', './js/**/*'], ['uglify:app']);
 
   // Watch static files
-  gulp.watch(['./client/**/*.*', '!./client/templates/**/*.*', '!./client/assets/{scss,js}/**/*.*'], ['copy']);
+  gulp.watch(['./client/**/*.*', '!./client/templates/**/*.*', '!./client/assets/{scss,js,css}/**/*.*'], ['copy']);
 
   // Watch app templates
   gulp.watch(['./client/templates/**/*.html'], ['copy:templates']);
