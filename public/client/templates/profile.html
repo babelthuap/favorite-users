@@ -7,19 +7,19 @@ controller: ProfileCtrl
 <div class="grid-container">
   <div class="grid-block vertical">
 
+    <div class="grid-block vertical">
+      <div class="grid-content text-center">
+        <h1>Hey there, {{user.name}}</h1>
+      </div>
+    </div>
 
-    <div class="grid-block">
+    <div class="grid-block spaced">
       <div class="medium-5 grid-block">
         <div class="grid-content">
-          <img ng-src={{user.profilePic}}>
+          <img class="profileimage" ng-src={{user.profilePic}}>
         </div>
       </div>
-      <div class="medium-7 grid-block vertical">
-        <div class="grid-block">
-          <div class="grid-content text-center">
-            <h1>Hey there, {{user.name}}</h1>
-          </div>
-        </div>
+      <div class="medium-7 small-12 grid-block vertical">
         <div class="grid-block vertical">
           <div class="grid-container">
 

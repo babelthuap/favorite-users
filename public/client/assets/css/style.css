@@ -14,3 +14,13 @@
 h1,h3, #heading,.forgotpassword {
   font-family: Cantarell;
 }
+img.resize {
+  
+}
+
+.profileimage {
+  width: 300px;
+  height: auto;
+  margin: 0 auto;
+  /*text-align: center;*/
+}
