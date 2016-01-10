@@ -23,8 +23,8 @@
       })
       .catch(function(err) {
         console.log(err);
-        $scope.loginError = err.data;
-        // $scope.$broadcast('', err);
+        err.type = 'loginError';
+        $scope.$broadcast('error', err);
       });
     }
 
@@ -42,11 +42,8 @@
       .catch(function(err){
         // email is taken
         console.log(err);
-        $scope.signupError = err.data;
-        $timeout(function(){
-          $scope.signupError = undefined;
-          $scope.$apply();
-        }, 2500)
+        err.type = 'signupError';
+        $scope.$broadcast('error', err);
       })
     };
 

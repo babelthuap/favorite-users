@@ -5,13 +5,19 @@ function errorMessage() {
     restrict: "AE",
     templateUrl: "templates/errorMessage.html",
     scope: {
-      type: "=",
+      type: "@",
     },
-    controller: function($scope) {
+    controller: function($scope, $timeout) {
       'use strict';
-      $scope.$on('login', function(event, error){
-        console.log('in directive', $scope.type, event);
-        $scope.message = error.data;
+      $scope.$on('error', function(event, error){
+        console.log('in directive', $scope.type, event, error);
+        if ($scope.type === error.type){
+          $scope.message = error.data;
+          $scope.hasError = true;
+          $timeout(function(){
+            $scope.hasError = false;
+          }, 2500);
+        }
       })
     }
   };
