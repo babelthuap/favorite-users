@@ -1,0 +1,47 @@
+
+<div class="grid-block container">
+
+  <div class="grid-block vertical text-center">
+    <div class="grid-block">
+      <div class="grid-content">
+        <h1>{{welcome}}</h1>
+      </div>
+    </div>
+    <div class="grid-block">
+      <div class="grid-block">
+        <div class="grid-content">
+          <img ng-src="{{userImage()}}">
+        </div>
+      </div>
+      <div class="grid-block">
+        <div class="grid-content">
+          <form>
+            <input type="text" placeholder="Name" ng-model="user.name" ng-required>
+            <input type="tel" placeholder="Phone Number" ng-model="user.phone">
+            <input type="text" placeholder="Address" ng-model="user.address">
+            <input type="password" placeholder="password" ng-model="user.password" required>
+            <input type="password" placeholder="Confirm Password" ng-model="user.confirmpassword" required>
+            <span ng-hide="!user.password || user.password === user.confirmpassword">Passwords Must Match!</span>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="grid-block">
+      <div class="grid-block">
+        <div class="grid-content">
+          <form>
+            <input type="file" ng-model="pic" base-sixty-four-input>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="grid-block">
+      <div class="grid-block">
+        <div class="grid-content">
+          <a class="button" ng-click="allDone(user)" ng-class="{disabled: !validate()}">All Done!</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
