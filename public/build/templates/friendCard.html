@@ -5,18 +5,21 @@
             <h3 class="nameonfriendcard float-center">{{data.name}}</h3></div>
             <span class="secondary badge float-right">{{data.friends.length}}</span>
     </div>
-    <div class="clearfix align-center">
-        <div class="card-section grid-block">
+    <div class="clearfix moreinfoaccordion">
+          <div class="grid-container moreinfo">
             <zf-accordion auto-open="false" collapsible="true">
                 <zf-accordion-item title="More Info">
-                    <ul>
-                        <li>
+                    <ul class="moreinfo">
+                        <li class="moreinfo">
+                          <span class="labelformoreinfo">Email:</span>
                             {{data.email}}
                         </li>
-                        <li>
+                        <li class="moreinfo">
+                          <span class="labelformoreinfo">Phone:</span>
                             {{data.phone}}
                         </li>
-                        <li>
+                        <li class="moreinfo">
+                          <span class="labelformoreinfo">Address: </span>
                             {{data.address}}
                         </li>
                     </ul>
