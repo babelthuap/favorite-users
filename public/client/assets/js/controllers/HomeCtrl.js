@@ -14,7 +14,7 @@
       $localStorage: $localStorage
     }));
 
-    $scope.welcome = 'Welcome.';
+    $scope.welcome = 'Welcome to Friend Finder!';
 
     $scope.loginUser = function() {
       UserSvc.login($scope.login)
