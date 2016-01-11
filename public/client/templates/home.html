@@ -17,7 +17,7 @@ controller: HomeCtrl
     <div class="grid-block">
       <div class="grid-block vertical">
         <div class="grid-content">
-          <h3>Sign Up</h3>
+          <h3 class="home">Sign Up</h3>
           <form name="signUpEmail">
             <input type="email" class="inputbox" placeholder="email" ng-model="email" required>
             <a class="button" ng-click="signup()" ng-class="{disabled: !email}">Sign Up!</a>
@@ -29,7 +29,7 @@ controller: HomeCtrl
       </div>
       <div class="grid-block vertical">
         <div class="grid-content">
-          <h3>Log In</h3>
+          <h3 class="home">Log In</h3>
           <form ng-submit="loginUser()">
             <input type="email" ng-model="login.email" placeholder="email" required>
             <input type="password" ng-model="login.password" placeholder="password" required>

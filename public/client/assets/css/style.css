@@ -35,3 +35,7 @@ h1,h3,.forgotpassword,.navbar-menu,#heading {
   width: 100%;
   margin: 0 auto;
 }
+
+h3.home {
+  text-align: center;
+}
