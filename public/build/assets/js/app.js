@@ -60,6 +60,7 @@
     UserSvc.getUserInfoUnpopulated(userId)
     .then(function(res) {
       $scope.user = res.data;
+      console.log("$scope.user.friends", $scope.user.friends)
     })
     .catch(function(err) {
       console.log(err);
@@ -69,7 +70,8 @@
     $scope.allUsers = [];
     UserSvc.getAllUsers().then(function(resp){
       $scope.allUsers = resp.data.filter(function(user){
-        return userId !== user._id
+        return (userId !== user._id) && 
+               ($scope.user.friends.indexOf(user._id) === -1);
       });
     });
 
