@@ -94,7 +94,7 @@ controller: ProfileCtrl
 
 
   <div class="grid-block align-center text-center">
-    <div class="grid-content" ng-repeat="friend in friends | filter : query">
+    <div class="grid-content small-12 medium-4 align-center" ng-repeat="friend in friends | filter : query">
       <friend-card ng-if="friends.length" user={{friend}}>
       </friend-card>
       <a class="button" ng-click="removeFriend(friend._id)">Remove Friend</a>
