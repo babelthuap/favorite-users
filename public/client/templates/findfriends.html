@@ -19,18 +19,18 @@ controller: FindFriendsCtrl
       </div>
     </div>
 
-    <div class="grid-block">
-      <div class="grid-block">
+    <div class="grid-block align-spaced">
+      <div class="grid-block medium-4 align-center">
         <div class="grid-content">
           <input type="text" placeholder="Name" ng-model="query.name">
         </div>
       </div>
-      <div class="grid-block">
+      <div class="grid-block medium-4 align-center">
         <div class="grid-content">
           <input type="text" placeholder="Email" ng-model="query.email">
         </div>
       </div>
-      <div class="grid-block">
+      <div class="grid-block medium-4 align-center">
         <div class="grid-content">
           <label for="range">
             <span class="inline-label">
@@ -51,8 +51,8 @@ controller: FindFriendsCtrl
       </div>
     </div>
 
-    <div class="grid-block">
-      <div class="grid-content" ng-repeat="friend in allUsers | filter : query">
+    <div class="grid-block vertical medium-horizontal">
+      <div class="grid-content  smaill-12 medium-4 align-center" ng-repeat="friend in allUsers | filter : query">
         <friend-card ng-if="allUsers.length" user={{friend}}>
         </friend-card>
         <a class="button" ng-click="addFriend(friend._id, $index)">Add Friend</a>

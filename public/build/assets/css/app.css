@@ -6499,3 +6499,9 @@ td, th {
 
 .menu-bar > li > img:first-child:last-child {
   margin: 40%; }
+
+h3.nameonfriendcard {
+  font-size: 4vw; }
+  @media only screen and (min-width: 40em) {
+    h3.nameonfriendcard {
+      font-size: 2vw; } }

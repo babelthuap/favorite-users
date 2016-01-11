@@ -1,26 +1,27 @@
-<div class="dark card">
-  <img src="{{data.profilePic}}">
-  <div class="card-divider">
-    <div class="clearfix">
-      <h3 class="float-left">{{data.name}}</h3>
-      <span class="secondary badge float-right">{{data.friends.length}}</span>
+<div class="dark card grid-block">
+    <img class="profileimage" src="{{data.profilePic}}">
+    <div class="card-divider">
+        <div>
+            <h3 class="nameonfriendcard float-center">{{data.name}}</h3></div>
+            <span class="secondary badge float-right">{{data.friends.length}}</span>
     </div>
-  </div>
-  <div class="card-section">
-    <zf-accordion auto-open="false" collapsible="true">
-      <zf-accordion-item title="More Info">
-        <ul>
-          <li>
-            {{data.email}}
-          </li>
-          <li>
-            {{data.phone}}
-          </li>
-          <li>
-            {{data.address}}
-          </li>
-        </ul>
-      </zf-accordion-item>
-    </zf-accordion>
-  </div>
-</div>  
+    <div class="clearfix align-center">
+        <div class="card-section grid-block">
+            <zf-accordion auto-open="false" collapsible="true">
+                <zf-accordion-item title="More Info">
+                    <ul>
+                        <li>
+                            {{data.email}}
+                        </li>
+                        <li>
+                            {{data.phone}}
+                        </li>
+                        <li>
+                            {{data.address}}
+                        </li>
+                    </ul>
+                </zf-accordion-item>
+            </zf-accordion>
+        </div>
+    </div>
+</div>

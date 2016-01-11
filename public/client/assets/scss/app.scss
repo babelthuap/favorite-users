@@ -9,3 +9,13 @@ td, th {
 .menu-bar > li > img:first-child:last-child {
   margin: 40%;
 }
+
+h3.nameonfriendcard {
+  @include breakpoint(medium) {
+  font-size: 2vw;    
+  }
+  @include breakpoint(small) {
+  font-size: 4vw;    
+  }
+
+}

@@ -8,8 +8,8 @@
   <link rel="shortcut icon" href="./assets/etc/imageedit_1_9606717757.ico" />
   <link type="text/css" media="screen" rel="stylesheet" href="./assets/responsive-tables.css" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <link href="./assets/css/app.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/app.css" type="text/css">
+  <link rel="stylesheet" href="./assets/css/style.css"type="text/css">
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="./assets/responsive-tables.js"></script>
   <script src="./assets/js/foundation.js"></script>
@@ -29,10 +29,10 @@
         </div>
         <div class="menu-group-right">
           <ul class="primary condense menu-bar">
-            <li><a href="#" ui-sref="profile" ng-if="amILoggedIn()">Profile</a></li>
-            <li><a href="#" ui-sref="findfriends" ng-if="amILoggedIn()">Find Friends</a></li>
-            <li><a href="#" ui-sref="admin" ng-if="amILoggedIn() && amIAdmin()">Admin</a></li>
-            <li><a href="#" ng-click="logout()" ng-if="amILoggedIn()">Log Out</a></li>
+            <li><a class="navbar-menu" href="#" ui-sref="profile" ng-if="amILoggedIn()">Profile<img zf-iconic="" icon="person" size="small"></a></li>
+            <li><a class="navbar-menu" href="#" ui-sref="findfriends" ng-if="amILoggedIn()">Find Friends<img zf-iconic="" icon="magnifying-glass" size="small"></a></li>
+            <li><a class="navbar-menu" href="#" ui-sref="admin" ng-if="amILoggedIn() && amIAdmin()">Admin</a></li>
+            <li><a class="navbar-menu" href="#" ng-click="logout()" ng-if="amILoggedIn()">Log Out<img zf-iconic="" icon="circle-x" size="small"></a></li>
           </ul>
         </div>
       </div>

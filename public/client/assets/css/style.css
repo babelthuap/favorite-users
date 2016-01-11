@@ -1,8 +1,10 @@
 @font-face {
-  font-family: "Cantarell";
+  font-family: 'Cantarell';
+  src: url('Cantarell-Regular-webfont.eot'); 
   src: url('Cantarell-Regular-webfont.ttf') format('truetype'),
        url('Cantarell-Regular-webfont.svg') format('svg');
 }
+
 .grid-container {
   padding: 50px;
 }
@@ -11,16 +13,25 @@
   margin-left:20px;
 }
 
-h1,h3, #heading,.forgotpassword {
-  font-family: Cantarell;
-}
-img.resize {
-  
+h1,h3,.forgotpassword,.navbar-menu,#heading {
+  font-family: 'Cantarell';
 }
 
 .profileimage {
-  width: 300px;
+  width: 300px !important;
   height: auto;
   margin: 0 auto;
-  /*text-align: center;*/
+}
+
+.navbar-menu {
+  line-height: 150% !important;
+}
+
+.inline-label {
+ margin-top: 0 !important; 
+}
+
+.card-divider {
+  width: 100%;
+  margin: 0 auto;
 }
