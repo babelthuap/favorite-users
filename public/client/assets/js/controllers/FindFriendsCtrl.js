@@ -32,14 +32,14 @@
     // fetch all users
     $scope.allUsers = [];
     UserSvc.getAllUsers().then(function(resp){
-      $scope.allUsers = resp.data;
+      $scope.allUsers = resp.data.filter(function(user){
+        return userId !== user._id
+      });
     });
 
     $scope.addFriend = function(friendId, idx){
       UserSvc.addFriend(userId, friendId);
       $scope.allUsers.splice(idx, 1);
     }
-
-
   }
 })();

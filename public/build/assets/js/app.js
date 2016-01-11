@@ -34,102 +34,6 @@
   }
 })();
 
-angular.module('application').directive('errorMessage', errorMessage);
-
-function errorMessage() {
-  return {
-    restrict: "AE",
-    templateUrl: "templates/errorMessage.html",
-    scope: {
-      type: "@",
-    },
-    controller: function($scope, $timeout) {
-      'use strict';
-      $scope.$on('error', function(event, error){
-        console.log('in directive', $scope.type, event, error);
-        if ($scope.type === error.type){
-          $scope.message = error.data;
-          $scope.hasError = true;
-          $timeout(function(){
-            $scope.hasError = false;
-          }, 2500);
-        }
-      })
-    }
-  };
-}
-
-angular.module('application').directive('friendCard', friendCard);
-
-function friendCard() {
-  return {
-    restrict: "AE",
-    templateUrl: "templates/friendCard.html",
-    scope: {
-      user: "@"
-    },
-    controller: function($scope) {
-      'use strict';
-      $scope.data = JSON.parse($scope.user);
-    }
-  };
-}
-
-angular.module('application').directive('userRow', userRow);
-
-function userRow() {
-  return {
-    restrict: "A",
-    templateUrl: "templates/userRow.html",
-    scope: {
-      data: "@"
-    },
-    controller: function(AdminSvc, $scope, $http) {
-      'use strict';
-
-      $scope.user = JSON.parse($scope.data);
-      $scope.updatedUser = JSON.parse($scope.data);
-
-      function populateUsers() {
-        $scope.$emit('populateUsers');
-      }
-
-      $scope.makeAdmin = function(user){
-        AdminSvc.makeAdmin(user)
-          .then(res => {
-          populateUsers();
-          console.log('Updated to admin successfully', res);
-        }).catch(err => {
-          console.error(err);
-        })
-      }
-
-      $scope.removeUser = function(user) {
-        AdminSvc.removeUser(user)
-          .then(res => {
-            populateUsers();
-            console.log('deleted user');
-          })
-          .catch(err => {
-            console.log('err', err);
-          });
-      }
-
-      $scope.editUser = function() {
-        AdminSvc.editUser($scope.updatedUser)
-          .then(res => {
-            populateUsers();
-            console.log('updated user');
-          })
-          .catch(err => {
-            console.log('err', err);
-          });
-      }
-
-    }
-  };
-}
-
 (function() {
   'use strict';
 
@@ -164,15 +68,15 @@ function userRow() {
     // fetch all users
     $scope.allUsers = [];
     UserSvc.getAllUsers().then(function(resp){
-      $scope.allUsers = resp.data;
+      $scope.allUsers = resp.data.filter(function(user){
+        return userId !== user._id
+      });
     });
 
     $scope.addFriend = function(friendId, idx){
       UserSvc.addFriend(userId, friendId);
       $scope.allUsers.splice(idx, 1);
     }
-
-
   }
 })();
 
@@ -489,6 +393,102 @@ function userRow() {
     }
   }
 })();
+
+angular.module('application').directive('errorMessage', errorMessage);
+
+function errorMessage() {
+  return {
+    restrict: "AE",
+    templateUrl: "templates/errorMessage.html",
+    scope: {
+      type: "@",
+    },
+    controller: function($scope, $timeout) {
+      'use strict';
+      $scope.$on('error', function(event, error){
+        console.log('in directive', $scope.type, event, error);
+        if ($scope.type === error.type){
+          $scope.message = error.data;
+          $scope.hasError = true;
+          $timeout(function(){
+            $scope.hasError = false;
+          }, 2500);
+        }
+      })
+    }
+  };
+}
+
+angular.module('application').directive('friendCard', friendCard);
+
+function friendCard() {
+  return {
+    restrict: "AE",
+    templateUrl: "templates/friendCard.html",
+    scope: {
+      user: "@"
+    },
+    controller: function($scope) {
+      'use strict';
+      $scope.data = JSON.parse($scope.user);
+    }
+  };
+}
+
+angular.module('application').directive('userRow', userRow);
+
+function userRow() {
+  return {
+    restrict: "A",
+    templateUrl: "templates/userRow.html",
+    scope: {
+      data: "@"
+    },
+    controller: function(AdminSvc, $scope, $http) {
+      'use strict';
+
+      $scope.user = JSON.parse($scope.data);
+      $scope.updatedUser = JSON.parse($scope.data);
+
+      function populateUsers() {
+        $scope.$emit('populateUsers');
+      }
+
+      $scope.makeAdmin = function(user){
+        AdminSvc.makeAdmin(user)
+          .then(res => {
+          populateUsers();
+          console.log('Updated to admin successfully', res);
+        }).catch(err => {
+          console.error(err);
+        })
+      }
+
+      $scope.removeUser = function(user) {
+        AdminSvc.removeUser(user)
+          .then(res => {
+            populateUsers();
+            console.log('deleted user');
+          })
+          .catch(err => {
+            console.log('err', err);
+          });
+      }
+
+      $scope.editUser = function() {
+        AdminSvc.editUser($scope.updatedUser)
+          .then(res => {
+            populateUsers();
+            console.log('updated user');
+          })
+          .catch(err => {
+            console.log('err', err);
+          });
+      }
+
+    }
+  };
+}
 
 (function() {
   'use strict';

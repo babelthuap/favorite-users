@@ -5,16 +5,13 @@ controller: FindFriendsCtrl
 ---
 
 <div class="grid-container">
-
   <div class="grid-block align-center text-center">
-
-    <div class="grid-block">
+    <div class="grid-block small-12">
       <div class="grid-content">
         <h1>{{welcome}}</h1>
       </div>
     </div>
-
-    <div class="grid-block align-spaced">
+    <div class="grid-block align-spaced small-12">
       <div class="grid-block medium-6 align-center">
         <div class="grid-content">
           <input type="text" placeholder="Find by name" ng-model="query.name">
@@ -33,6 +30,5 @@ controller: FindFriendsCtrl
         <a class="button" ng-click="addFriend(friend._id, $index)">Add Friend</a>
       </div>
     </div>
-
   </div>
 </div>
