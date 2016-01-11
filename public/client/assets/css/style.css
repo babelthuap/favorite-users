@@ -57,3 +57,7 @@ div.moreinfoaccordion {
   width: 100%;
   margin: 0 auto;
 }
+
+.editbtn,.makeadmin,.deletebtn {
+  text-align: center;
+}

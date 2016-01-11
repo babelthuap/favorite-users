@@ -4,7 +4,7 @@
 <td class='address'>{{user.address}}</td>
 <td class='avatar'><img src="{{user.profilePic}}" alt="profilepic" width="50px"></td>
 <td class='editbtn'>
-  <a zf-open="{{user.email}}" class="button">Edit</a>
+  <a zf-open="{{user.email}}"><i class="fa fa-pencil"></i></a>
   <div zf-modal="" id="{{user.email}}">
     <div class="grid-block vertical">
       <div class="grid-block">
@@ -48,5 +48,5 @@
     </div>
   </div>
 </td>
-<td class='makeadmin' ng-click='makeAdmin(user)'>make admin</td>
-<td class='deletebtn' ng-click='removeUser(user)'>remove</td>
+<td class='makeadmin' ng-click='makeAdmin(user)'><i class="fa fa-lock"></i></td>
+<td class='deletebtn' ng-click='removeUser(user)'><i class="fa fa-trash"></i></td>
