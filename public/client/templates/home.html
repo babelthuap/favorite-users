@@ -30,6 +30,7 @@ controller: HomeCtrl
       <div class="grid-block vertical">
         <div class="grid-content">
           <h3 class="home">Log In</h3>
+          
           <form ng-submit="loginUser()">
             <input type="email" ng-model="login.email" placeholder="email" required>
             <input type="password" ng-model="login.password" placeholder="password" required>
@@ -37,6 +38,7 @@ controller: HomeCtrl
               <a class="button" ng-click="loginUser()" ng-class="{disabled: !login.email || !login.password}">Log In</a>
             </div>
           </form>
+
         </div>
         <div class="grid-block">
           <error-message type="loginError"></error-message>

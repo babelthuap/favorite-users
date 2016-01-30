@@ -143,6 +143,9 @@ gulp.task('uglify:app', function() {
   return gulp.src(paths.appJS)
   .pipe(uglify)
   .pipe($.concat('app.js'))
+  .pipe($.babel({
+    presets: ['es2015'] // convert ES6 -> ES5 for my javascript
+  }))
   .pipe(gulp.dest('./build/assets/js/'))
   ;
 });
